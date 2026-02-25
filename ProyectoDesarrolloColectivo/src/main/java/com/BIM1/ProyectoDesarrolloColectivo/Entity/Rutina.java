@@ -2,6 +2,7 @@ package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Rutina")
@@ -21,8 +22,9 @@ public class Rutina {
     private String dias_semana;
 
     @Column(name = "fk_id_usuario")
-    @NotBlank
+    @NotNull
     private Integer fk_id_usuario;
+
 
     public Integer getId_rutina() {
         return id_rutina;
