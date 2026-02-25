@@ -59,7 +59,7 @@ public class PerfilNutricionalServiceImplements implements PerfilNutricionalServ
     @Override
     public void deletePerfilNutricional(Integer id) {
         PerfilNutricional perfilNutricional1 = perfilNutricionalRepository.findById(id).orElse(null);
-        if(perfilNutricional1 != null){
+        if(perfilNutricional1 == null){
             throw new Exception("el id del perfil no existe");
         }
         perfilNutricionalRepository.deleteById(id);
