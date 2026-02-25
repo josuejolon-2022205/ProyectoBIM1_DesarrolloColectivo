@@ -13,7 +13,7 @@ public class RachaLecturaServiceImplements implements RachaLecturaService {
 
     private final RachaLecturaRepository repository;
 
-    public RachaLecturaServiceImplements(RachaLecturaRepository repositoy) {
+    public RachaLecturaServiceImplements(RachaLecturaRepository repository) {
         this.repository = repository;
     }
 
