@@ -63,7 +63,7 @@ public class RachaLecturaController {
         }
     }
 
-    
+
     @PostMapping("/usuario/{idUsuario}/fecha/{fecha}")
     public ResponseEntity<Object> crearRachaPorUsuario(
             @PathVariable Integer idUsuario,
