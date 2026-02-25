@@ -1,4 +1,4 @@
-package com.BIM1.ProyectoDesarrolloColectivo.Controller;
+package com.BIM1.ProyectoDesarrolloColectivo.Controllers;
 
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.RachaEjercicio;
 import com.BIM1.ProyectoDesarrolloColectivo.Service.RachaEjercicioService;
