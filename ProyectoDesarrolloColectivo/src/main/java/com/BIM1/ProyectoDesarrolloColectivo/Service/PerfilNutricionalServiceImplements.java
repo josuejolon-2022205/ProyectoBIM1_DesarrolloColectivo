@@ -53,7 +53,7 @@ public class PerfilNutricionalServiceImplements implements PerfilNutricionalServ
         }else{
             throw new Exception("el id del perfil no existe");
         }
-        return perfilNutricionalRepository.findById(id).orElse(null);
+        return perfilNutricionalRepository.save(perfilNutricional1);
     }
 
     @Override
