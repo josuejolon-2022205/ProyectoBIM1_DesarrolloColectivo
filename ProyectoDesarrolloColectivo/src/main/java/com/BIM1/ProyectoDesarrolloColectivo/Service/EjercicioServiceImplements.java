@@ -55,7 +55,7 @@ public class EjercicioServiceImplements implements EjercicioService{
     @Override
     public void deleteEjercicio(Integer id) {
         Ejercicio ejercicios = ejercicioRepository.findById(id).orElse(null);
-        if(ejercicios != null){
+        if(ejercicios == null){
             throw new Exception("el id del ejercicio no existe");
         }
         ejercicioRepository.deleteById(id);
