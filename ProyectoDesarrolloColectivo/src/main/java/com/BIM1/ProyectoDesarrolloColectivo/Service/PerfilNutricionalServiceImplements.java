@@ -39,7 +39,7 @@ public class PerfilNutricionalServiceImplements implements PerfilNutricionalServ
     }
 
     @Override
-    public PerfilNutricional updatePerfilNutricional(PerfilNutricional perfilNutricional, Integer id) {
+    public PerfilNutricional updatePerfilNutricional(Integer id, PerfilNutricional perfilNutricional) {
         PerfilNutricional perfilNutricional1 = perfilNutricionalRepository.findById(id).orElse(null);
         if(perfilNutricional1 != null){
             perfilNutricional1.setPeso_kg(perfilNutricional.getPeso_kg());
