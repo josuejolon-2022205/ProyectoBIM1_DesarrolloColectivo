@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public interface ObjetivoMeditacionService {
 
-    List<ObjetivoMeditacion> getAllOjetivosMeditacion();
+    List<ObjetivoMeditacion> getAllObjetivosMeditacion();
     ObjetivoMeditacion getObjetivosMeditacionById (Integer id);
     ObjetivoMeditacion saveObjetivoMeditacion (ObjetivoMeditacion objetivoMeditacion) throws RuntimeException;
     ObjetivoMeditacion updateObjetivoMeditacion (Integer id, ObjetivoMeditacion objetivoMeditacion);
