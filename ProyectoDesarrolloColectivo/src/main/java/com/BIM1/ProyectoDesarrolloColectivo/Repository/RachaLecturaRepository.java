@@ -1,4 +1,9 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Repository;
 
-public interface RachaLecturaRepository {
+import com.BIM1.ProyectoDesarrolloColectivo.Entity.RachaLectura;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface RachaLecturaRepository extends JpaRepository<RachaLectura, Integer> {
 }
