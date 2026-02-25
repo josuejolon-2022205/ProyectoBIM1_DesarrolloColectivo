@@ -8,7 +8,7 @@ public interface PerfilNutricionalService {
     List<PerfilNutricional> getAListPerfilNuticional();
     PerfilNutricional getPerfilNutricionalById(Integer id);
     PerfilNutricional savePerfilNutrcional(PerfilNutricional perfilNutricional) throws RuntimeException;
-    PerfilNutricional updatePerfilNutricional(PerfilNutricional perfilNutricional, Integer id);
+    PerfilNutricional updatePerfilNutricional(Integer id, PerfilNutricional perfilNutricional);
     void deletePerfilNutricional(Integer id);
 
 }
