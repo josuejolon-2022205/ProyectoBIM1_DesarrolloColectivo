@@ -55,7 +55,7 @@ public class LibroServiceImplements  implements LibroService {
     @Override
     public void deleteLibro(Integer id) {
         Libro libros = libroRepository.findById(id).orElse(null);
-        if(libros != null){
+        if(libros == null){
             throw new Exception("el id del libro no existe");
         }
         libroRepository.deleteById(id);
