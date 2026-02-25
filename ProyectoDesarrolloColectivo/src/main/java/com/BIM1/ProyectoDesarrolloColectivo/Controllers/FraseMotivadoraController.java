@@ -34,7 +34,7 @@ public class FraseMotivadoraController {
     }
 
     @PutMapping
-    public ResponseEntity<Object> updateFraseMotivadora(@PathVariable Integer id, @Valid @RequestBody FraseMotivadora fraseMotivadora){
+    public ResponseEntity<Object> updateFraseMotivadora( Integer id, @Valid @RequestBody FraseMotivadora fraseMotivadora){
         try {
             FraseMotivadora updateFrase = fraseMotivadoraService.updateFraseMotivadora(id,fraseMotivadora);
             return new ResponseEntity<>(updateFrase,HttpStatus.OK);
