@@ -28,4 +28,9 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("message", "JSON inválido o tipo de dato incorrecto."));
     }
 
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<?> validarFk(ConstraintViolationException e) {
+        String msg = e.getConstraintViolations().iterator().next().getMessage();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Error", "Error en las llaves foraneas"));
+    }
 }
