@@ -49,7 +49,7 @@ public class LibroServiceImplements  implements LibroService {
         }else{
             throw new Exception("el id del libro no existe");
         }
-        return libroRepository.findById(id).orElse(null);
+        return libroRepository.save(libros);
     }
 
     @Override
