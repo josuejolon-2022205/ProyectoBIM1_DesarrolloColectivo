@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
-
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -37,7 +36,18 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUsuarioById(@PathVariable Integer id, @RequestBody Usuario usuario) {
+    public ResponseEntity<?>getUsuariosById(@PathVariable Integer id) {
+        Usuario usuario = usuarioService.getUsuariosById(id);
+
+        if (usuario == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Usuario no encontrado");
+        }
+        return ResponseEntity.ok(usuario);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUsuario(@PathVariable Integer id, @RequestBody Usuario usuario) {
 
         Usuario actualizado = usuarioService.updateUsuario(id, usuario);
         return ResponseEntity.ok(actualizado);
