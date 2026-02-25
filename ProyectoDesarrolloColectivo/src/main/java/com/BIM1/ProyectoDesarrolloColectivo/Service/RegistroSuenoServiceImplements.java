@@ -39,7 +39,7 @@ public class RegistroSuenoServiceImplements implements RegistroSuenoService {
     public RegistroSueno updateRegistroSueno (Integer id, RegistroSueno registroSueno) {
 
         RegistroSueno registroSuenoExistente = registroSuenoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("El usuario no se ha encontrado con id: " + id));
+                .orElseThrow(() -> new RuntimeException("El registro sueño no se ha encontrado con id: " + id));
 
         registroSuenoExistente.setFecha_sueño(registroSueno.getFecha_sueño());
         registroSuenoExistente.setHoras_dormidas(registroSueno.getHoras_dormidas());
