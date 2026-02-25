@@ -47,7 +47,7 @@ public class RutinaServiceImplements implements RutinaService {
         }else{
             throw new Exception("el id de la rutina no existe");
         }
-        return rutinaRepository.findById(id).orElse(null);
+        return rutinaRepository.save(rutina1);
     }
 
     @Override
