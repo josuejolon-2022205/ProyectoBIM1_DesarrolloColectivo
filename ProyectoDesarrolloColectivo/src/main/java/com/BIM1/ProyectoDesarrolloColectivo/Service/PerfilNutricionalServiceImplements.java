@@ -1,4 +1,67 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Service;
 
-public class PerfilNutricionalServiceImplements {
+
+import com.BIM1.ProyectoDesarrolloColectivo.Entity.Ejercicio;
+import com.BIM1.ProyectoDesarrolloColectivo.Entity.PerfilNutricional;
+import com.BIM1.ProyectoDesarrolloColectivo.Exceptions.Exception;
+import com.BIM1.ProyectoDesarrolloColectivo.Repository.PerfilNutricionalRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class PerfilNutricionalServiceImplements implements PerfilNutricionalService{
+    private final PerfilNutricionalRepository perfilNutricionalRepository;
+
+    public PerfilNutricionalServiceImplements(PerfilNutricionalRepository perfilNutricionalRepository) {
+        this.perfilNutricionalRepository = perfilNutricionalRepository;
+    }
+
+
+    @Override
+    public List<PerfilNutricional> getAListPerfilNuticional() {
+        return perfilNutricionalRepository.findAll();
+    }
+
+    @Override
+    public PerfilNutricional getPerfilNutricionalById(Integer id) {
+        PerfilNutricional perfilNutricional = perfilNutricionalRepository.findById(id).orElse(null);
+        if(perfilNutricional == null){
+            throw new IllegalArgumentException();
+        }else{
+            return perfilNutricionalRepository.findById(id).orElse(null);
+        }
+    }
+
+    @Override
+    public PerfilNutricional savePerfilNutrcional(PerfilNutricional perfilNutricional) throws RuntimeException {
+        return perfilNutricionalRepository.save(perfilNutricional);
+    }
+
+    @Override
+    public PerfilNutricional updatePerfilNutricional(PerfilNutricional perfilNutricional, Integer id) {
+        PerfilNutricional perfilNutricional1 = perfilNutricionalRepository.findById(id).orElse(null);
+        if(perfilNutricional1 != null){
+            perfilNutricional1.setPeso_kg(perfilNutricional.getPeso_kg());
+            perfilNutricional1.setAltura(perfilNutricional.getAltura());
+            perfilNutricional1.setEdad(perfilNutricional.getEdad());
+            perfilNutricional1.setGenero(perfilNutricional.getGenero());
+            perfilNutricional1.setNivel_actividad(perfilNutricional.getNivel_actividad());
+            perfilNutricional1.setObjetivo(perfilNutricional.getObjetivo());
+            perfilNutricional1.setFk_id_usuario(perfilNutricional.getFk_id_usuario());
+
+        }else{
+            throw new Exception("el id del perfil no existe");
+        }
+        return perfilNutricionalRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deletePerfilNutricional(Integer id) {
+        PerfilNutricional perfilNutricional1 = perfilNutricionalRepository.findById(id).orElse(null);
+        if(perfilNutricional1 != null){
+            throw new Exception("el id del perfil no existe");
+        }
+        perfilNutricionalRepository.deleteById(id);
+    }
 }
