@@ -1,7 +1,6 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Service;
 
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.RegistroSueno;
-import com.BIM1.ProyectoDesarrolloColectivo.Entity.Usuario;
 import com.BIM1.ProyectoDesarrolloColectivo.Repository.RegistroSuenoRepository;
 import org.springframework.stereotype.Service;
 
