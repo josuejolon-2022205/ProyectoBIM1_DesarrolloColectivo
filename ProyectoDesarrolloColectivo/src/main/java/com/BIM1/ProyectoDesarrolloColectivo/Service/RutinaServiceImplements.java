@@ -53,7 +53,7 @@ public class RutinaServiceImplements implements RutinaService {
     @Override
     public void deleteRutina(Integer id) {
         Rutina rutina = rutinaRepository.findById(id).orElse(null);
-        if(rutina != null){
+        if(rutina == null){
             throw new Exception("el id de la rutina no existe");
         }
         rutinaRepository.deleteById(id);
