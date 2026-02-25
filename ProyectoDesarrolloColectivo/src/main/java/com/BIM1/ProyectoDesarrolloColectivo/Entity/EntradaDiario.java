@@ -1,5 +1,13 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "EntradaDiario")
 public class EntradaDiario {
 
     @Id
