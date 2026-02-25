@@ -22,5 +22,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Object> validAnotaciones(MethodArgumentNotValidException e){
         return ResponseEntity.badRequest().body(Map.of("Error", e.getLocalizedMessage()));
     }
+    
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<?> validarJsonYTipoDato(HttpMessageNotReadableException e){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("message", "JSON inválido o tipo de dato incorrecto."));
+    }
 
 }
