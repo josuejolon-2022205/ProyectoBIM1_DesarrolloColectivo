@@ -50,5 +50,34 @@ public class RachaLecturaController {
         }
     }
 
+    @PostMapping("/agregar")
+    public ResponseEntity<Object> agregarRacha(@RequestBody RachaLectura racha) {
+        try {
+            RachaLectura nueva = rachaLecturaService.saveRacha(racha);
+            return new ResponseEntity<>(nueva, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Error al crear la racha de lectura: " + e.getMessage());
+        }
+    }
+
+    
+    @PostMapping("/usuario/{idUsuario}/fecha/{fecha}")
+    public ResponseEntity<Object> crearRachaPorUsuario(
+            @PathVariable Integer idUsuario,
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
+
+        try {
+            RachaLectura nueva = rachaLecturaService.addRacha(idUsuario, fecha);
+            return new ResponseEntity<>(nueva, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Error al crear la racha de lectura por usuario y fecha: " + e.getMessage());
+        }
+    }
 
 }
