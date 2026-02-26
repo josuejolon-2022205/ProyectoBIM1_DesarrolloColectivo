@@ -14,15 +14,15 @@ public class Rutina {
     private Integer id_rutina;
 
     @Column(name = "nombre_rutina")
-    @NotBlank
+    @NotBlank(message = "el nombre de la rutina no puede estar vacio")
     private String nombre_rutina;
 
     @Column(name = "dias_semana")
-    @NotBlank
+    @NotBlank(message = "los dias de la semana no puede ser vacio")
     private String dias_semana;
 
     @Column(name = "fk_id_usuario")
-    @NotNull
+    @NotNull(message = "el id del usuario no pude estar vacio o nulo")
     private Integer fk_id_usuario;
 
 
