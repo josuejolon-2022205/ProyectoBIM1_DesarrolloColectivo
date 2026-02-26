@@ -14,27 +14,27 @@ public class Ejercicio {
     private Integer id_ejercicio;
 
     @Column(name = "nombre_ejercicio")
-    @NotBlank
+    @NotBlank(message = "el nombre del ejercicio no puede estar vacio")
     private String nombre_ejercicio;
 
     @Column(name = "series_ejercicio")
-    @NotNull
+    @NotNull(message = "las series del ejercicio son obligatorias")
     private int series_ejercicio;
 
     @Column(name = "repeticiones_ejercicio")
-    @NotNull
+    @NotNull(message = "las repeticiones del ejercicio no pueden ser nulas")
     private int repeticiones_ejercicio;
 
     @Column(name = "tiempo_ejercicio")
-    @NotNull
+    @NotNull(message = "el tiempo del ejercicio es obligatorio")
     private int tiempo_ejercicio;
 
     @Column(name = "descanso_ejercicio")
-    @NotNull
+    @NotNull(message = "el descanso del ejercicio es obligatorio")
     private int descanso_ejercicio;
 
     @Column(name = "fk_id_rutina")
-    @NotNull
+    @NotNull(message = "el id de la llave foranea es obligatoria")
     private Integer fk_id_rutina;
 
     public Integer getId_ejercicio() {
