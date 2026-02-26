@@ -10,6 +10,7 @@ import java.util.Date;
 @Table(name = "Objetivos")
 public class Objetivos {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_objetivos")
     private Integer idObjetivos;
 
