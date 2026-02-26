@@ -15,27 +15,27 @@ public class Libro {
     private Integer id_libro;
 
     @Column(name = "titulo_libro")
-    @NotBlank
+    @NotBlank(message = "el titulo del libro no puede estar vacio")
     private String titulo_libro;
 
     @Column(name = "autor_libro")
-    @NotBlank
+    @NotBlank(message = "el autor del libro no puede estar vacio")
     private String autor_libro;
 
     @Column(name = "estado")
-    @NotBlank
+    @NotBlank(message = "el estado del libro no puede estar vacio")
     private String estado;
 
     @Column(name = "cantidad_pag")
-    @NotNull
+    @NotNull(message = "la cantidad de las paginas no pueden ser nulas")
     private int cantidad_pag;
 
     @Column(name = "cantidad_leido")
-    @NotNull
+    @NotNull(message = "la cantidad de las pag leidas no pueden ser nulas")
     private int cantidad_leido;
 
     @Column(name = "fk_id_usuario")
-    @NotNull
+    @NotNull(message = "el id del usuario no puede estar vacio o nulo")
     private Integer fk_id_usuario;
 
     public Integer getId_libro() {
@@ -86,11 +86,11 @@ public class Libro {
         this.cantidad_leido = cantidad_leido;
     }
 
-    public @NotNull Integer getFk_id_usuario() {
+    public Integer getFk_id_usuario() {
         return fk_id_usuario;
     }
 
-    public void setFk_id_usuario(@NotNull Integer fk_id_usuario) {
+    public void setFk_id_usuario(Integer fk_id_usuario) {
         this.fk_id_usuario = fk_id_usuario;
     }
 }
