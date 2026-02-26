@@ -15,31 +15,31 @@ public class PerfilNutricional {
     private Integer id_perfil_nutricional;
 
     @Column(name = "peso_kg")
-    @NotNull
+    @NotNull(message = "el peso no puede estar vacio o nulo")
     private int peso_kg;
 
     @Column(name = "altura")
-    @NotNull
+    @NotNull(message = "la altura no puede estar vacia")
     private Double altura;
 
     @Column(name = "edad")
-    @NotNull
+    @NotNull(message = "la edad no puede ser vacia ni nula")
     private int edad;
 
     @Column(name = "genero")
-    @NotBlank
+    @NotBlank(message = "el genero no puede ser vacio")
     private String genero;
 
     @Column(name = "nivel_actividad")
-    @NotBlank
+    @NotBlank(message = "el nivel de actividad no puede ser vacio")
     private String nivel_actividad;
 
     @Column(name = "objetivo")
-    @NotBlank
+    @NotBlank(message = "el objetivo no puede estar vacio")
     private String objetivo;
 
     @Column(name = "fk_id_usuario")
-    @NotNull
+    @NotNull(message = "el id del usuario no puede ser vacio ni nulo")
     private Integer fk_id_usuario;
 
     public Integer getId_perfil_nutricional() {
