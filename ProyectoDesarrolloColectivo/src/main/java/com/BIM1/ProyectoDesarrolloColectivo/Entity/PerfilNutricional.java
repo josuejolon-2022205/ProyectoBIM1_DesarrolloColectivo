@@ -15,8 +15,8 @@ public class PerfilNutricional {
     private Integer id_perfil_nutricional;
 
     @Column(name = "peso_kg")
-    @NotBlank
-    private String peso_kg;
+    @NotNull
+    private int peso_kg;
 
     @Column(name = "altura")
     @NotNull
@@ -50,11 +50,11 @@ public class PerfilNutricional {
         this.id_perfil_nutricional = id_perfil_nutricional;
     }
 
-    public String getPeso_kg() {
+    public int getPeso_kg() {
         return peso_kg;
     }
 
-    public void setPeso_kg(String peso_kg) {
+    public void setPeso_kg(int peso_kg) {
         this.peso_kg = peso_kg;
     }
 
