@@ -4,6 +4,7 @@ package com.BIM1.ProyectoDesarrolloColectivo.Service;
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.Rutina;
 import com.BIM1.ProyectoDesarrolloColectivo.Exceptions.Exception;
 import com.BIM1.ProyectoDesarrolloColectivo.Repository.RutinaRepository;
+import com.BIM1.ProyectoDesarrolloColectivo.Validator.RutinaValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +12,11 @@ import java.util.List;
 @Service
 public class RutinaServiceImplements implements RutinaService {
     private final RutinaRepository rutinaRepository;
+    private final RutinaValidator rutinaValidator;
 
-    public RutinaServiceImplements(RutinaRepository rutinaRepository) {
+    public RutinaServiceImplements(RutinaRepository rutinaRepository, RutinaValidator rutinaValidator) {
         this.rutinaRepository = rutinaRepository;
+        this.rutinaValidator = rutinaValidator;
     }
 
     @Override
@@ -33,6 +36,7 @@ public class RutinaServiceImplements implements RutinaService {
 
     @Override
     public Rutina saveRutina(Rutina rutina) throws RuntimeException {
+        rutinaValidator.validarRutina(rutina);
         return rutinaRepository.save(rutina);
     }
 
@@ -40,6 +44,7 @@ public class RutinaServiceImplements implements RutinaService {
     public Rutina updateRutina(Integer id, Rutina rutina) {
         Rutina rutina1 = rutinaRepository.findById(id).orElse(null);
         if(rutina1 != null){
+            rutinaValidator.validarRutina(rutina);
             rutina1.setNombre_rutina(rutina.getNombre_rutina());
             rutina1.setDias_semana(rutina.getDias_semana());
             rutina1.setFk_id_usuario(rutina.getFk_id_usuario());
