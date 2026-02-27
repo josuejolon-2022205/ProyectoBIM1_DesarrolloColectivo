@@ -8,8 +8,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -20,13 +20,14 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Object> validAnotaciones(MethodArgumentNotValidException e){
-        return ResponseEntity.badRequest().body(Map.of("Error", e.getLocalizedMessage()));
+    public ResponseEntity<?> handleBodyValidation(MethodArgumentNotValidException ex) {
+        List<String> mensajes = ex.getBindingResult().getFieldErrors().stream().map(err -> err.getDefaultMessage()).toList();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("errores", mensajes));
     }
     
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<?> validarJsonYTipoDato(HttpMessageNotReadableException e){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("message", "JSON inválido o tipo de dato incorrecto."));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "JSON inválido o tipo de dato incorrecto."));
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
