@@ -1,8 +1,7 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "Ejercicio")
@@ -15,26 +14,36 @@ public class Ejercicio {
 
     @Column(name = "nombre_ejercicio")
     @NotBlank(message = "el nombre del ejercicio no puede estar vacio")
+    @Size(max = 60, message = "el nombre del ejercicio no puede pasar de 60 letras")
     private String nombre_ejercicio;
 
     @Column(name = "series_ejercicio")
     @NotNull(message = "las series del ejercicio son obligatorias")
+    @Positive(message = "las series tienen que ser mayor que 1")
+    @Max(value = 24, message = "la series no pueden ser mayores a 24")
     private int series_ejercicio;
 
     @Column(name = "repeticiones_ejercicio")
     @NotNull(message = "las repeticiones del ejercicio no pueden ser nulas")
+    @Positive(message = "las repeticiones del ejercicio tiene que ser mayor que 1")
+    @Max(value = 100, message = "la repeticiones del ejercicio no pueden ser mayores a 100")
     private int repeticiones_ejercicio;
 
     @Column(name = "tiempo_ejercicio")
     @NotNull(message = "el tiempo del ejercicio es obligatorio")
+    @Positive(message = "el tiempo del ejercicio no puede ser menor a 0")
+    @Max(value = 3600, message = "el tiempo del ejercicio no puede ser mayor a una hora")
     private int tiempo_ejercicio;
 
     @Column(name = "descanso_ejercicio")
     @NotNull(message = "el descanso del ejercicio es obligatorio")
+    @Positive(message = "el descanso del ejercicio no puede ser menor a 0")
+    @Max(value = 600, message = "el tiempo del descanso no puede ser mayor a 10 minutos")
     private int descanso_ejercicio;
 
     @Column(name = "fk_id_rutina")
     @NotNull(message = "el id de la llave foranea es obligatoria")
+    @Positive(message = "el id de la rutina no puede ser menor o igual a 0")
     private Integer fk_id_rutina;
 
     public Integer getId_ejercicio() {
