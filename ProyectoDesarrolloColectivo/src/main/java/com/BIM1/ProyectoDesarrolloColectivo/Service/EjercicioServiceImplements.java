@@ -50,7 +50,7 @@ public class EjercicioServiceImplements implements EjercicioService{
             ejercicios.setRepeticiones_ejercicio(ejercicio.getRepeticiones_ejercicio());
             ejercicios.setTiempo_ejercicio(ejercicio.getTiempo_ejercicio());
             ejercicios.setDescanso_ejercicio(ejercicio.getDescanso_ejercicio());
-            ejercicios.setFk_id_rutina(ejercicio.getFk_id_rutina());
+            ejercicios.setFk_id_rutina(ejercicio.getFk_id_rutina()); 
         }else{
             throw new Exception("el id del ejercicio no existe");
         }
