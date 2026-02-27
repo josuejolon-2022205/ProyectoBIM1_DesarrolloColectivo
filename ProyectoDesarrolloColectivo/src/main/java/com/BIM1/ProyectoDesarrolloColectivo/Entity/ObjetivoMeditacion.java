@@ -2,9 +2,10 @@ package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "ObjetivosMeditacion")
+@Table(name = "objetivoMeditacion")
 public class ObjetivoMeditacion {
 
     @Id
@@ -20,13 +21,9 @@ public class ObjetivoMeditacion {
     @Column(name = "dias_objetivo")
     private String dias_objetivo;
 
-    @NotBlank(message = "El fk_id_usuario no puede estar vacío")
+    @NotNull(message = "El fk_id_usuario no puede estar vacío")
     @Column(name = "fk_id_usuario")
     private Integer fk_id_usuario;
-
-    public ObjetivoMeditacion() {
-
-    }
 
     public Integer getId_objetivo_meditacion() {
         return id_objetivo_meditacion;
