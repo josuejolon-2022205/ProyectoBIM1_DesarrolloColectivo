@@ -2,9 +2,10 @@ package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "RegistrosSueños")
+@Table(name = "registroSueño")
 public class RegistroSueno {
 
     @Id
@@ -24,13 +25,9 @@ public class RegistroSueno {
     @Column(name = "calidad_sueño")
     private String calidad_sueño;
 
-    @NotBlank(message = "El fk_id_usuario no puede estar vacío")
+    @NotNull(message = "El fk_id_usuario no puede estar vacío")
     @Column(name = "fk_id_usuario")
     private Integer fk_id_usuario;
-
-    public RegistroSueno() {
-
-    }
 
     public Integer getId_registro_sueño() {
         return id_registro_sueño;
