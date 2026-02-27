@@ -1,10 +1,9 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Service;
 
-
-import com.BIM1.ProyectoDesarrolloColectivo.Entity.Ejercicio;
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.PerfilNutricional;
 import com.BIM1.ProyectoDesarrolloColectivo.Exceptions.Exception;
 import com.BIM1.ProyectoDesarrolloColectivo.Repository.PerfilNutricionalRepository;
+import com.BIM1.ProyectoDesarrolloColectivo.Validator.PerfilNutricionalValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +11,11 @@ import java.util.List;
 @Service
 public class PerfilNutricionalServiceImplements implements PerfilNutricionalService{
     private final PerfilNutricionalRepository perfilNutricionalRepository;
+    private final PerfilNutricionalValidator perfilNutricionalValidator;
 
-    public PerfilNutricionalServiceImplements(PerfilNutricionalRepository perfilNutricionalRepository) {
+    public PerfilNutricionalServiceImplements(PerfilNutricionalRepository perfilNutricionalRepository, PerfilNutricionalValidator perfilNutricionalValidator) {
         this.perfilNutricionalRepository = perfilNutricionalRepository;
+        this.perfilNutricionalValidator = perfilNutricionalValidator;
     }
 
 
@@ -35,6 +36,7 @@ public class PerfilNutricionalServiceImplements implements PerfilNutricionalServ
 
     @Override
     public PerfilNutricional savePerfilNutrcional(PerfilNutricional perfilNutricional) throws RuntimeException {
+        perfilNutricionalValidator.PerfilNutricionalValidaciones(perfilNutricional);
         return perfilNutricionalRepository.save(perfilNutricional);
     }
 
@@ -42,6 +44,7 @@ public class PerfilNutricionalServiceImplements implements PerfilNutricionalServ
     public PerfilNutricional updatePerfilNutricional(Integer id, PerfilNutricional perfilNutricional) {
         PerfilNutricional perfilNutricional1 = perfilNutricionalRepository.findById(id).orElse(null);
         if(perfilNutricional1 != null){
+            perfilNutricionalValidator.PerfilNutricionalValidaciones(perfilNutricional);
             perfilNutricional1.setPeso_kg(perfilNutricional.getPeso_kg());
             perfilNutricional1.setAltura(perfilNutricional.getAltura());
             perfilNutricional1.setEdad(perfilNutricional.getEdad());
