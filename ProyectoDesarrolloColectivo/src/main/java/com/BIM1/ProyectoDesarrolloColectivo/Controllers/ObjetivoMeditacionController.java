@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/ObjetivosMeditacion")
+@RequestMapping("/api/objetivosMeditacion")
 public class ObjetivoMeditacionController {
 
     private final ObjetivoMeditacionService objetivoMeditacionService;
@@ -35,7 +35,18 @@ public class ObjetivoMeditacionController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getObjetivosMeditacionById(@PathVariable Integer id, @RequestBody ObjetivoMeditacion objetivoMeditacion) {
+    public ResponseEntity<?>getObjetivosMeditacionById(@PathVariable Integer id) {
+        ObjetivoMeditacion objetivoMeditacion = objetivoMeditacionService.getObjetivosMeditacionById(id);
+
+        if (objetivoMeditacion == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Objetivo Meditación no encontrado");
+        }
+        return ResponseEntity.ok(objetivoMeditacion);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateObjetivoMeditacion(@PathVariable Integer id, @RequestBody ObjetivoMeditacion objetivoMeditacion) {
 
         ObjetivoMeditacion actualizado = objetivoMeditacionService.updateObjetivoMeditacion(id, objetivoMeditacion);
         return ResponseEntity.ok(actualizado);
@@ -48,7 +59,7 @@ public class ObjetivoMeditacionController {
 
         if (objetivoMeditacion == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("El Objetivo meditación no existe");
+                    .body("Objetivo meditación no existe");
         }
 
         objetivoMeditacionService.deleteObjetivoMeditacion(id);
