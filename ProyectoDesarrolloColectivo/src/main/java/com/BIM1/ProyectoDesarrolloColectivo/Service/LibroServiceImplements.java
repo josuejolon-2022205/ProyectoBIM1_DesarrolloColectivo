@@ -3,6 +3,7 @@ package com.BIM1.ProyectoDesarrolloColectivo.Service;
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.Libro;
 import com.BIM1.ProyectoDesarrolloColectivo.Exceptions.Exception;
 import com.BIM1.ProyectoDesarrolloColectivo.Repository.LibroRepository;
+import com.BIM1.ProyectoDesarrolloColectivo.Validator.LibroValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +11,11 @@ import java.util.List;
 @Service
 public class LibroServiceImplements  implements LibroService {
     private final LibroRepository libroRepository;
+    private final LibroValidator libroValidator;
 
-    public LibroServiceImplements(LibroRepository libroRepository) {
+    public LibroServiceImplements(LibroRepository libroRepository, LibroValidator libroValidator) {
         this.libroRepository = libroRepository;
+        this.libroValidator = libroValidator;
     }
 
     @Override
@@ -32,6 +35,7 @@ public class LibroServiceImplements  implements LibroService {
 
     @Override
     public Libro saveLibro(Libro libro) throws RuntimeException {
+        libroValidator.libroValidaciones(libro);
         return libroRepository.save(libro);
     }
 
@@ -40,6 +44,7 @@ public class LibroServiceImplements  implements LibroService {
 
         Libro libros = libroRepository.findById(id).orElse(null);
         if(libros != null){
+            libroValidator.libroValidaciones(libro);
             libros.setTitulo_libro(libro.getTitulo_libro());
             libros.setAutor_libro(libro.getAutor_libro());
             libros.setEstado(libro.getEstado());
