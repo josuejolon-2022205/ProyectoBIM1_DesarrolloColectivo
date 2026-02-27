@@ -1,4 +1,4 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Repository;
 
-public class ApoyoEmocionalRepository {
+public interface ApoyoEmocionalRepository {
 }
