@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/RegistrosSueños")
+@RequestMapping("/api/registrosSuenos")
 public class RegistroSuenoController {
 
     private final RegistroSuenoService registroSuenoService;
@@ -25,7 +25,7 @@ public class RegistroSuenoController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> createRegistrosSueno (@Valid @RequestBody RegistroSueno registroSueno) {
+    public ResponseEntity<Object> createRegistrosSueno(@Valid @RequestBody RegistroSueno registroSueno) {
         try {
             RegistroSueno createdRegistroSueno = registroSuenoService.saveRegistroSueno(registroSueno);
             return new ResponseEntity<>(createdRegistroSueno, HttpStatus.CREATED);
@@ -33,25 +33,37 @@ public class RegistroSuenoController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-        @GetMapping("/{id}")
-        public ResponseEntity<?> getRegistrosSuenosById(@PathVariable Integer id, @RequestBody RegistroSueno registroSueno) {
 
-            RegistroSueno actualizado = registroSuenoService.updateRegistroSueno(id, registroSueno);
-            return ResponseEntity.ok(actualizado);
+    @GetMapping("/{id}")
+    public ResponseEntity<?>getRegistrosSuenosById(@PathVariable Integer id) {
+        RegistroSueno registroSueno = registroSuenoService.getRegistrosSuenosById(id);
+
+        if (registroSueno == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Registro Sueño no encontrado");
         }
-
-        @DeleteMapping("/{id}")
-        public ResponseEntity<?> deleteRegistroSueno(@PathVariable Integer id) {
-
-            RegistroSueno registroSueno = registroSuenoService.getRegistrosSuenosById(id);
-
-            if (registroSueno == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body("El Registro sueño no existe");
-            }
-
-            registroSuenoService.deleteRegistroSueno(id);
-            return ResponseEntity.ok("Registro sueño eliminado correctamente");
-        }
-
+        return ResponseEntity.ok(registroSueno);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateRegistroSueno(@PathVariable Integer id, @RequestBody RegistroSueno registroSueno) {
+
+        RegistroSueno actualizado = registroSuenoService.updateRegistroSueno(id, registroSueno);
+        return ResponseEntity.ok(actualizado);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteRegistroSueno(@PathVariable Integer id) {
+
+        RegistroSueno registroSueno = registroSuenoService.getRegistrosSuenosById(id);
+
+        if (registroSueno == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Registro sueño no existe");
+        }
+
+        registroSuenoService.deleteRegistroSueno(id);
+        return ResponseEntity.ok("Registro sueño eliminado correctamente");
+    }
+
+}
