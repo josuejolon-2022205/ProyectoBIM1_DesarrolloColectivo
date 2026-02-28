@@ -31,8 +31,8 @@ public class ObjetivosController {
         }
     }
 
-    @PutMapping
-    public ResponseEntity<Object> updateObjetivos(Integer id,@Valid @RequestBody Objetivos objetivos){
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateObjetivos(@PathVariable Integer id,@Valid @RequestBody Objetivos objetivos){
         try {
             Objetivos updateObjetivo = objetivosService.updateObjetivos(id,objetivos);
             return new ResponseEntity<>(updateObjetivo,HttpStatus.OK);
