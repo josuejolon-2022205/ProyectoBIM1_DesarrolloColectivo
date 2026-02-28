@@ -16,23 +16,23 @@ public class RegistroMeditacion {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipoMeditacion")
-    @NotNull
+    @NotNull(message = "Seleccione un tipo de meditacion")
     private TipoMeditacion tipo_meditacion;
 
     @Column(name = "duracionMinutos")
-    @NotNull
+    @NotNull(message = "Seleccione la cantidad de minutos")
     private Integer duracion_minutos;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "nivelDificultad")
-    @NotNull
+    @NotNull(message = "Seleccione un nivel de dificultad")
     private NivelDificultad nivel_dificultad;
 
     @Column(name = "fechaRegistro")
     private LocalDateTime fecha_registro;
 
     @Column(name = "FKidUsuario")
-    @NotNull
+    @NotNull(message = "la llave foranea no puede estar vacia")
     private Integer fk_id_usuario;
 
     public enum TipoMeditacion {
