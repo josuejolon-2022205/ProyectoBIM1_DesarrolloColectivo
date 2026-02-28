@@ -14,15 +14,9 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<?> validarId(Exception e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Error: ", "el id no existe"));
-    }
-
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<?> validarFormatoJSONYTipoDato(HttpMessageNotReadableException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(Map.of("Error: ", "JSON inválido o el tipo de dato es incorrecto"));
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> validarCampos(Exception e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error: ", e.getMessage()));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -31,10 +25,19 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Errores:", mensajes));
     }
 
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<?> validarFormatoJsonYTipoDato(HttpMessageNotReadableException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Error: ", "JSON inválido o el tipo de dato es incorrecto"));
+    }
+
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<?> validarFKS(ConstraintViolationException e) {
         String msg = e.getConstraintViolations().iterator().next().getMessage();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Error: ", "No existe el id del FK"));
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<?> validarId(IllegalArgumentException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error: ", "El id no se encontró"));
+    }
 }
