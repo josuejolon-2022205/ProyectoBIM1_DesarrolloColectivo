@@ -2,6 +2,7 @@ package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
@@ -20,6 +21,7 @@ public class RachaLectura {
     private Integer diasConsecutivos;
 
     @NotNull(message = "La fecha es obligatoria")
+    @FutureOrPresent(message = "La fecha no puede ser pasada")
     @Column(name = "fecha")
     private LocalDate fecha;
 
