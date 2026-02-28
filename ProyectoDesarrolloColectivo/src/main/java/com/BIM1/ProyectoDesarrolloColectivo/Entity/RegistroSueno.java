@@ -1,8 +1,7 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "registroSueño")
@@ -18,14 +17,17 @@ public class RegistroSueno {
     private String fecha_sueño;
 
     @NotBlank(message = "Las horas dormidas no pueden estar vacías")
+    @Max(value = 15, message = "Las horas máximas dormidas permitidas son de 15")
     @Column(name = "horas_dormidas")
     private String horas_dormidas;
 
     @NotBlank(message = "La calidad del sueño no puede estar vacío")
+    @Size(max = 100, message = "La calidad del sueño no puede tener más de 100 caracteres")
     @Column(name = "calidad_sueño")
     private String calidad_sueño;
 
     @NotNull(message = "El fk_id_usuario no puede estar vacío")
+    @Positive(message = "El FK no puede ser menor que 1")
     @Column(name = "fk_id_usuario")
     private Integer fk_id_usuario;
 
