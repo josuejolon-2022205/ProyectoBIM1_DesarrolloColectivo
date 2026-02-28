@@ -2,6 +2,9 @@ package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name = "Racha_lectura")
@@ -12,12 +15,15 @@ public class RachaLectura {
     @Column(name = "id_racha_lectura")
     private Integer idRachaLectura;
 
+    @Min(value = 0, message = "Los días consecutivos no pueden ser negativos")
     @Column(name = "dias_consecutivos")
     private Integer diasConsecutivos;
 
+    @NotNull(message = "La fecha es obligatoria")
     @Column(name = "fecha")
     private LocalDate fecha;
 
+    @NotNull(message = "El usuario es obligatorio")
     @Column(name = "fk_id_usuario")
     private Integer fkIdUsuario;
 
