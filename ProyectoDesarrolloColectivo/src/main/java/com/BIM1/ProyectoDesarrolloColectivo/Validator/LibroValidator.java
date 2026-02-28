@@ -18,32 +18,9 @@ public class LibroValidator {
 
     public void libroValidaciones(Libro libro){
 
-        if(libro.getTitulo_libro().trim().length() > 100){
-            throw new Exception("El titulo del libro no puede pasar las 100 letras");
-        }
-
-        if(libro.getAutor_libro().trim().length() > 100){
-            throw new Exception("el autor del libro no puede pasar a las 100 letras");
-        }
-
-        if(libro.getCantidad_pag() <= 0){
-            throw new Exception("las cantidad de paginas del libro debe ser mayor a 0");
-        }
-
-        if(libro.getCantidad_pag() > 4000){
-            throw new Exception("la cantidad de las paginas no pueden ser mayores a 4000");
-        }
-
-        if(libro.getCantidad_leido() < 0){
-            throw new Exception("la cantidad de paginas leidas no pueden ser negativas");
-        }
 
         if(libro.getCantidad_leido() > libro.getCantidad_pag()){
             throw new Exception("la cantidad leido no puede ser mayor a las cantidades de paginas que tiene el libro");
-        }
-
-        if(libro.getFk_id_usuario() <= 0){
-            throw new Exception("el id del usuario no puede ser negativo");
         }
 
         if(libro.getEstado().equals("terminado") && libro.getCantidad_leido() != libro.getCantidad_pag()){
