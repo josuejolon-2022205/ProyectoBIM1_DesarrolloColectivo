@@ -39,7 +39,7 @@ public class ObjetivosValidator {
     }
 
     public void ObjetivosValidacionesId(Integer id){
-        if (objetivosRepository.existsById(id)){
+        if (!objetivosRepository.existsById(id)){
             throw new CustomException("Objetivo no encontrado");
         }
     }
