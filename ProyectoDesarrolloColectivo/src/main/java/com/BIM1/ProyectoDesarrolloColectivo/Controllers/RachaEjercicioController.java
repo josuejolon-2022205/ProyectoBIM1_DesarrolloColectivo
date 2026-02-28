@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/racha-ejercicio")
-@CrossOrigin("*")
 public class RachaEjercicioController {
 
     private final RachaEjercicioService rachaEjercicioService;
@@ -20,66 +19,50 @@ public class RachaEjercicioController {
         this.rachaEjercicioService = rachaEjercicioService;
     }
 
-
     @GetMapping("/usuario/{idUsuario}")
-    public ResponseEntity<Object> getRachasByUsuario(@PathVariable Integer idUsuario) {
-        try {
-            List<RachaEjercicio> lista = rachaEjercicioService.getRachasByUsuario(idUsuario);
-            return ResponseEntity.ok(lista);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Error al obtener rachas del usuario: " + e.getMessage());
-        }
+    public List<RachaEjercicio> getByUsuario(@PathVariable Integer idUsuario) {
+        return rachaEjercicioService.getRachasByUsuario(idUsuario);
     }
 
 
-    @GetMapping("/usuario/{idUsuario}/rango")
-    public ResponseEntity<Object> getRachasByRango(
-            @PathVariable Integer idUsuario,
-            @RequestParam LocalDate inicio,
-            @RequestParam LocalDate fin) {
-
-        try {
-            List<RachaEjercicio> lista = rachaEjercicioService.getRachasByUsuarioAndRango(idUsuario, inicio, fin);
-            return ResponseEntity.ok(lista);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Error al obtener rachas por rango: " + e.getMessage());
-        }
+    @GetMapping("/usuario/{idUsuario}/entre")
+    public List<RachaEjercicio> getByUsuarioYRango(@PathVariable Integer idUsuario, @RequestParam String inicio, @RequestParam String fin) {
+        LocalDate ini = LocalDate.parse(inicio);
+        LocalDate fn = LocalDate.parse(fin);
+        return rachaEjercicioService.getRachasByUsuarioAndRango(idUsuario, ini, fn);
     }
 
 
-@PostMapping("/agregar")
+
+
+    @PostMapping("/agregar")
 public ResponseEntity<Object> agregarRacha(@RequestBody RachaEjercicio racha) {
-    try {
-        RachaEjercicio nueva = rachaEjercicioService.saveRacha(racha);
+    try { RachaEjercicio nueva = rachaEjercicioService.saveRacha(racha);
         return new ResponseEntity<>(nueva, HttpStatus.CREATED);
     } catch (IllegalArgumentException e) {
         return ResponseEntity.badRequest().body(e.getMessage());
     } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body("Error al crear la racha: " + e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }
 
 
-@PostMapping("/usuario/{idUsuario}/fecha/{fecha}")
-public ResponseEntity<Object> crearRachaPorUsuario(
-        @PathVariable Integer idUsuario,
-        @PathVariable LocalDate fecha) {
 
-    try {
-        RachaEjercicio nueva = rachaEjercicioService.addRacha(idUsuario, fecha);
-        return new ResponseEntity<>(nueva, HttpStatus.CREATED);
-    } catch (IllegalArgumentException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body("Error al crear la racha por usuario y fecha: " + e.getMessage());
+
+    @PostMapping("/usuario/{idUsuario}")
+    public ResponseEntity<Object> crearRachaPorUsuario( @PathVariable Integer idUsuario, @RequestParam String fecha) {
+        try {
+            LocalDate fechaParseada = LocalDate.parse(fecha);
+            RachaEjercicio nueva = rachaEjercicioService.addRacha(idUsuario, fechaParseada);
+            return new ResponseEntity<>(nueva, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
-}
+    }
 
-}
 
 
 
