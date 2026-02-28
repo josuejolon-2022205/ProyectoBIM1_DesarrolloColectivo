@@ -3,6 +3,7 @@ package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 @Table(name = "objetivoMeditacion")
@@ -14,14 +15,17 @@ public class ObjetivoMeditacion {
     private Integer id_objetivo_meditacion;
 
     @NotBlank(message = "El tiempo objetivo no puede estar vacío")
+    @Positive(message = "El tiempo objetivo no puede ser menor que 1")
     @Column(name = "tiempo_objetivo")
     private String tiempo_objetivo;
 
     @NotBlank(message = "Los días objetivo no pueden estar vacíos")
+    @Positive(message = "Los días objetivo no puede ser menor que 1")
     @Column(name = "dias_objetivo")
     private String dias_objetivo;
 
     @NotNull(message = "El fk_id_usuario no puede estar vacío")
+    @Positive(message = "El FK no puede ser menor que 1")
     @Column(name = "fk_id_usuario")
     private Integer fk_id_usuario;
 
