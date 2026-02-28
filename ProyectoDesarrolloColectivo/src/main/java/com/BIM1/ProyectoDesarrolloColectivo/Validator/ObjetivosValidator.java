@@ -1,16 +1,23 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Validator;
 
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.Objetivos;
+import com.BIM1.ProyectoDesarrolloColectivo.Entity.Usuario;
 import com.BIM1.ProyectoDesarrolloColectivo.Exceptions.CustomException;
+import com.BIM1.ProyectoDesarrolloColectivo.Repository.FraseMotivadoraRepository;
 import com.BIM1.ProyectoDesarrolloColectivo.Repository.ObjetivosRepository;
+import com.BIM1.ProyectoDesarrolloColectivo.Repository.UsuarioRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ObjetivosValidator {
     public  final ObjetivosRepository objetivosRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final FraseMotivadoraRepository fraseRepository;
 
-    public ObjetivosValidator(ObjetivosRepository objetivosRepository) {
+    public ObjetivosValidator(ObjetivosRepository objetivosRepository, UsuarioRepository usuarioRepository, FraseMotivadoraRepository fraseRepository) {
         this.objetivosRepository = objetivosRepository;
+        this.usuarioRepository = usuarioRepository;
+        this.fraseRepository = fraseRepository;
     }
 
     public void ObjetivosValidaciones(Objetivos objetivos){
@@ -29,11 +36,11 @@ public class ObjetivosValidator {
             throw new CustomException("Ya existe un Objetivo con los mismos datos");
         }
 
-        if (!objetivosRepository.existsByUsuario(objetivos.getUsuario())){
+        if (!usuarioRepository.existsById(objetivos.getUsuario().getId_usuario())){
             throw new CustomException("Usuario inexistente");
         }
 
-        if (!objetivosRepository.existsByFraseMotivadora(objetivos.getFraseMotivadora())){
+        if (!fraseRepository.existsById(objetivos.getFraseMotivadora().getIdFraseMotivadora())){
             throw new CustomException("Frase inexistente");
         }
     }
