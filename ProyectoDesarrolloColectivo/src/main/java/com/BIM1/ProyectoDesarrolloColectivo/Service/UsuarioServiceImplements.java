@@ -1,7 +1,9 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Service;
 
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.Usuario;
+import com.BIM1.ProyectoDesarrolloColectivo.Exceptions.Exception;
 import com.BIM1.ProyectoDesarrolloColectivo.Repository.UsuarioRepository;
+import com.BIM1.ProyectoDesarrolloColectivo.Validator.UsuarioValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +12,11 @@ import java.util.List;
 public class UsuarioServiceImplements implements UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final UsuarioValidator usuarioValidator;
 
-    public UsuarioServiceImplements (UsuarioRepository usuarioRepository) {
+    public UsuarioServiceImplements (UsuarioRepository usuarioRepository, UsuarioValidator usuarioValidator) {
         this.usuarioRepository = usuarioRepository;
+        this.usuarioValidator = usuarioValidator;
     }
 
     @Override
@@ -27,6 +31,7 @@ public class UsuarioServiceImplements implements UsuarioService {
 
     @Override
     public Usuario saveUsuario (Usuario usuario) throws RuntimeException {
+        usuarioValidator.UsuarioValidar(usuario);
         return usuarioRepository.save(usuario);
     }
 
@@ -39,8 +44,9 @@ public class UsuarioServiceImplements implements UsuarioService {
     public Usuario updateUsuario (Integer id, Usuario usuario) {
 
         Usuario usuarioExistente = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("El usuario no se ha encontrado con id: " + id));
+                .orElseThrow(() -> new Exception("El usuario no se ha encontrado con id: " + id));
 
+        usuarioValidator.UsuarioValidar(usuario);
         usuarioExistente.setNombre_completo(usuario.getNombre_completo());
         usuarioExistente.setCorreo_usuario(usuario.getCorreo_usuario());
         usuarioExistente.setContraseña(usuario.getContraseña());
