@@ -2,6 +2,7 @@ package com.BIM1.ProyectoDesarrolloColectivo.Service;
 
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.ObjetivoMeditacion;
 import com.BIM1.ProyectoDesarrolloColectivo.Repository.ObjetivoMeditacionRepository;
+import com.BIM1.ProyectoDesarrolloColectivo.Validator.ObjetivoMeditacionValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +11,11 @@ import java.util.List;
 public class ObjetivoMeditacionServiceImplements implements ObjetivoMeditacionService{
 
     private final ObjetivoMeditacionRepository objetivoMeditacionRepository;
+    private final ObjetivoMeditacionValidator objetivoMeditacionValidator;
 
-    public ObjetivoMeditacionServiceImplements (ObjetivoMeditacionRepository objetivoMeditacionRepository) {
+    public ObjetivoMeditacionServiceImplements (ObjetivoMeditacionRepository objetivoMeditacionRepository, ObjetivoMeditacionValidator objetivoMeditacionValidator) {
         this.objetivoMeditacionRepository = objetivoMeditacionRepository;
+        this.objetivoMeditacionValidator = objetivoMeditacionValidator;
     }
 
     @Override
@@ -27,6 +30,7 @@ public class ObjetivoMeditacionServiceImplements implements ObjetivoMeditacionSe
 
     @Override
     public ObjetivoMeditacion saveObjetivoMeditacion (ObjetivoMeditacion objetivoMeditacion) throws RuntimeException {
+        objetivoMeditacionValidator.ObjetivoMeditacionValidar(objetivoMeditacion);
         return objetivoMeditacionRepository.save(objetivoMeditacion);
     }
 
@@ -41,6 +45,7 @@ public class ObjetivoMeditacionServiceImplements implements ObjetivoMeditacionSe
         ObjetivoMeditacion ObjetivoMeditacionExistente = objetivoMeditacionRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("El objetivo meditacion no se ha encontrado con id: " + id));
 
+        objetivoMeditacionValidator.ObjetivoMeditacionValidar(objetivoMeditacion);
         ObjetivoMeditacionExistente.setTiempo_objetivo(objetivoMeditacion.getTiempo_objetivo());
         ObjetivoMeditacionExistente.setDias_objetivo(objetivoMeditacion.getDias_objetivo());
         ObjetivoMeditacionExistente.setFk_id_usuario(objetivoMeditacion.getFk_id_usuario());
