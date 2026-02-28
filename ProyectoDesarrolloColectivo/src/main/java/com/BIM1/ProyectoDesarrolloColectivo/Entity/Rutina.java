@@ -3,6 +3,8 @@ package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "Rutina")
@@ -15,14 +17,17 @@ public class Rutina {
 
     @Column(name = "nombre_rutina")
     @NotBlank(message = "el nombre de la rutina no puede estar vacio")
+    @Size(max = 50, message = "el nombre de la rutina no puede tener mas de 50 caracteres")
     private String nombre_rutina;
 
     @Column(name = "dias_semana")
     @NotBlank(message = "los dias de la semana no puede ser vacio")
+    @Size(max = 100, message = "los dias de la semana no pueden tener mas de 100 caracteres")
     private String dias_semana;
 
     @Column(name = "fk_id_usuario")
     @NotNull(message = "el id del usuario no pude estar vacio o nulo")
+    @Positive(message = "el id de la llave foranea no puede ser menor o igual 0")
     private Integer fk_id_usuario;
 
 
