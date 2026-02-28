@@ -30,7 +30,7 @@ public class EntradaDiario {
     private String reflexion;
 
     @Column(name = "fk_id_Usuario")
-    @NotNull
+    @NotNull(message = "la llave foranea no puede estar vacia")
     private Integer fk_id_usuario;
 
     public Integer getId_entrada_diario() {
