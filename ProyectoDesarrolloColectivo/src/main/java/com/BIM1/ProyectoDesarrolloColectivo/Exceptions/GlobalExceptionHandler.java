@@ -15,12 +15,12 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> validarId(Exception e){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error:", "el id no se encontro"));
+    public ResponseEntity<?> validarCampos(Exception e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error:", e.getMessage()));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> handleBodyValidation(MethodArgumentNotValidException ex) {
+    public ResponseEntity<?> validarAnotaciones(MethodArgumentNotValidException ex) {
         List<String> mensajes = ex.getBindingResult().getFieldErrors().stream().map(err -> err.getDefaultMessage()).toList();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("errores", mensajes));
     }
@@ -34,5 +34,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> validarFk(ConstraintViolationException e) {
         String msg = e.getConstraintViolations().iterator().next().getMessage();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Error", "Error en las llaves foraneas"));
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<?> validarId(IllegalArgumentException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error", "el id no se encontro"));
     }
 }
