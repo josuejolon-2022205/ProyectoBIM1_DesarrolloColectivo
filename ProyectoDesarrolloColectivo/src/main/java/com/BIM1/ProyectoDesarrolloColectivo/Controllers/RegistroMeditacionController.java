@@ -41,9 +41,7 @@ public class RegistroMeditacionController {
             return new ResponseEntity<>(registroMeditacion1, HttpStatus.OK);
         }catch (IllegalArgumentException e){
             return ResponseEntity.badRequest().body(e.getMessage());
-
         }
-
     }
 
     @DeleteMapping("/{id}")
@@ -53,9 +51,7 @@ public class RegistroMeditacionController {
             return ResponseEntity.noContent().build();
         }catch (ObjectNotFoundException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-
         }
-
     }
 
     @GetMapping("/{id}")
@@ -67,7 +63,4 @@ public class RegistroMeditacionController {
             return ResponseEntity.notFound().build();
         }
     }
-
-
-
 }
