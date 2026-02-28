@@ -23,8 +23,8 @@ public class RegistroMeditacionServiceImplements implements RegistroMeditacionSe
 
     @Override
     public RegistroMeditacion getRegistroMeditacionById(Integer id){
-        return registroMeditacionRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException(id, "RegistroMeditacion"));
+        return registroMeditacionRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id, "RegistroMeditacion"));
+        // La funcion de lambda en este apartado facilita la implementacion de interfaces ya que antes de la flecha van parametros y luego va el cuerpo de la funcion
     }
 
     @Override
@@ -34,8 +34,7 @@ public class RegistroMeditacionServiceImplements implements RegistroMeditacionSe
 
     @Override
     public RegistroMeditacion updateRegistroMeditacion(Integer id, RegistroMeditacion registroMeditacion){
-        RegistroMeditacion existing = registroMeditacionRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException(id, "RegistroMeditacion"));
+        RegistroMeditacion existing = registroMeditacionRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id, "RegistroMeditacion"));
         existing.setTipo_meditacion(registroMeditacion.getTipo_meditacion());
         existing.setDuracion_minutos(registroMeditacion.getDuracion_minutos());
         existing.setNivel_dificultad(registroMeditacion.getNivel_dificultad());
