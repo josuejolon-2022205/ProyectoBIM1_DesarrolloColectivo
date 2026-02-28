@@ -9,16 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/entradaDiario")
 public class EntradaDiarioController {
     private final com.BIM1.ProyectoDesarrolloColectivo.Service.EntradaDiarioService entradaDiarioService;
-
     public EntradaDiarioController(com.BIM1.ProyectoDesarrolloColectivo.Service.EntradaDiarioService entradaDiarioService) {
         this.entradaDiarioService = entradaDiarioService;
     }
-
     @GetMapping
     public List<EntradaDiario> getAListEntradaDiario(){
         return entradaDiarioService.getAListEntradaDiario();
@@ -41,9 +38,7 @@ public class EntradaDiarioController {
             return new ResponseEntity<>(entradaDiario1, HttpStatus.OK);
         }catch (IllegalArgumentException e){
             return ResponseEntity.badRequest().body(e.getMessage());
-
         }
-
     }
 
     @DeleteMapping("/{id}")
@@ -53,9 +48,7 @@ public class EntradaDiarioController {
             return ResponseEntity.noContent().build();
         }catch (ObjectNotFoundException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-
         }
-
     }
 
     @GetMapping("/{id}")
@@ -67,7 +60,4 @@ public class EntradaDiarioController {
             return ResponseEntity.notFound().build();
         }
     }
-
-
-
 }
