@@ -2,8 +2,7 @@ package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "Libro")
@@ -16,10 +15,12 @@ public class Libro {
 
     @Column(name = "titulo_libro")
     @NotBlank(message = "el titulo del libro no puede estar vacio")
+    @Size(max = 100, message = "el titulo del libro no puede tener mas de 100 caracteres")
     private String titulo_libro;
 
     @Column(name = "autor_libro")
     @NotBlank(message = "el autor del libro no puede estar vacio")
+    @Size(max = 100, message = "el nombre del autor del libro no puede tener mas de 100 caracteres")
     private String autor_libro;
 
     @Column(name = "estado")
@@ -28,14 +29,18 @@ public class Libro {
 
     @Column(name = "cantidad_pag")
     @NotNull(message = "la cantidad de las paginas no pueden ser nulas")
+    @Positive(message = "la cantidad de paginas debe ser mayor a 0")
+    @Max(value = 4000, message = "la cantidad de paginas no puede superar los 4000 mil ")
     private int cantidad_pag;
 
     @Column(name = "cantidad_leido")
     @NotNull(message = "la cantidad de las pag leidas no pueden ser nulas")
+    @PositiveOrZero(message = "las paginas leidas no pueden ser negativas")
     private int cantidad_leido;
 
     @Column(name = "fk_id_usuario")
     @NotNull(message = "el id del usuario no puede estar vacio o nulo")
+    @Positive(message = "el id de la llave foranea no puede ser menor o igual 0")
     private Integer fk_id_usuario;
 
     public Integer getId_libro() {
