@@ -15,4 +15,6 @@ public interface ObjetivosRepository extends JpaRepository<Objetivos,Integer> {
             Usuario usuario,
             FraseMotivadora fraseMotivadora
     );
+
+    boolean existsByUsuario(Usuario usuario);
 }
