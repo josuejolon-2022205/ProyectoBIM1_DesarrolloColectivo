@@ -23,16 +23,13 @@ public class RachaLecturaController {
         return rachaLecturaService.getRachasByUsuario(idUsuario);
     }
 
-    @GetMapping("/usuario/{idUsuario}/entre")
-    public List<RachaLectura> getByUsuarioYRango(@PathVariable Integer idUsuario, @RequestParam String inicio, @RequestParam String fin) {
 
+    @GetMapping("/usuario/{idUsuario}/entre/{inicio}/{fin}")
+    public List<RachaLectura> getByUsuarioYRango( @PathVariable Integer idUsuario, @PathVariable String inicio, @PathVariable String fin) {
         LocalDate ini = LocalDate.parse(inicio);
         LocalDate fn  = LocalDate.parse(fin);
-
         return rachaLecturaService.getRachasByUsuarioAndRango(idUsuario, ini, fn);
-
     }
-
 
     @PostMapping("/agregar")
     public ResponseEntity<Object> agregarRacha(@RequestBody RachaLectura racha) {
@@ -47,10 +44,13 @@ public class RachaLecturaController {
 
 
 
-    @PostMapping("/usuario/{idUsuario}")
+
+    @PostMapping("/usuario/{idUsuario}/fecha/{fecha}")
     public ResponseEntity<Object> crearRachaPorUsuario(
             @PathVariable Integer idUsuario,
-            @RequestParam String fecha) { try { LocalDate fechaParseada = LocalDate.parse(fecha);
+            @PathVariable String fecha) {
+        try {
+            LocalDate fechaParseada = LocalDate.parse(fecha); // YYYY-MM-DD
             RachaLectura nueva = rachaLecturaService.addRacha(idUsuario, fechaParseada);
             return new ResponseEntity<>(nueva, HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
@@ -60,3 +60,4 @@ public class RachaLecturaController {
         }
     }
 }
+
