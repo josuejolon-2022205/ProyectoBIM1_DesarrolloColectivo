@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
+import jakarta.validation.constraints.FutureOrPresent;
 
 @Entity
 @Table(name = "Racha_ejercicio")
@@ -19,6 +20,7 @@ public class RachaEjercicio {
     private Integer diasConsecutivos;
 
     @NotNull(message = "La fecha es obligatoria")
+    @FutureOrPresent(message = "La fecha no puede ser pasada")
     @Column(name = "fecha")
     private LocalDate fecha;
 
