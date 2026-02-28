@@ -31,9 +31,16 @@ public class RachaLecturaController {
         return rachaLecturaService.getRachasByUsuarioAndRango(idUsuario, ini, fn);
     }
 
+
     @PostMapping("/agregar")
-    public ResponseEntity<Object> agregarRacha(@RequestBody RachaLectura racha) {
-        try { RachaLectura nueva = rachaLecturaService.saveRacha(racha);
+    public ResponseEntity<Object> agregarRacha(@jakarta.validation.Valid @RequestBody RachaLectura racha, org.springframework.validation.BindingResult bindingResult) {
+        try { if (bindingResult.hasErrors()) {
+                java.util.Map<String, String> errors = new java.util.HashMap<>();
+                bindingResult.getFieldErrors()
+                        .forEach(err -> errors.put(err.getField(), err.getDefaultMessage()));
+                return ResponseEntity.badRequest().body(errors);
+            }
+            RachaLectura nueva = rachaLecturaService.saveRacha(racha);
             return new ResponseEntity<>(nueva, HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -41,23 +48,24 @@ public class RachaLecturaController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
 
 
 
 
     @PostMapping("/usuario/{idUsuario}/fecha/{fecha}")
-    public ResponseEntity<Object> crearRachaPorUsuario(
-            @PathVariable Integer idUsuario,
-            @PathVariable String fecha) {
-        try {
-            LocalDate fechaParseada = LocalDate.parse(fecha); // YYYY-MM-DD
+    public ResponseEntity<Object> crearRachaPorUsuario( @PathVariable Integer idUsuario, @PathVariable String fecha) {
+        try {LocalDate fechaParseada;
+            try { fechaParseada = LocalDate.parse(fecha);
+            } catch (Exception e) { return ResponseEntity.badRequest().body("Formato de fecha inválido. Usa YYYY-MM-DD.");
+            }
             RachaLectura nueva = rachaLecturaService.addRacha(idUsuario, fechaParseada);
             return new ResponseEntity<>(nueva, HttpStatus.CREATED);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (IllegalArgumentException e) { return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
 }
 
