@@ -2,6 +2,7 @@ package com.BIM1.ProyectoDesarrolloColectivo.Service;
 
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.RegistroSueno;
 import com.BIM1.ProyectoDesarrolloColectivo.Repository.RegistroSuenoRepository;
+import com.BIM1.ProyectoDesarrolloColectivo.Validator.RegistroSuenoValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +11,11 @@ import java.util.List;
 public class RegistroSuenoServiceImplements implements RegistroSuenoService {
 
     private final RegistroSuenoRepository registroSuenoRepository;
+    private final RegistroSuenoValidator  registroSuenoValidator;
 
-    public RegistroSuenoServiceImplements (RegistroSuenoRepository registroSuenoRepository) {
+    public RegistroSuenoServiceImplements (RegistroSuenoRepository registroSuenoRepository, RegistroSuenoValidator registroSuenoValidator) {
         this.registroSuenoRepository = registroSuenoRepository;
+        this.registroSuenoValidator = registroSuenoValidator;
     }
 
     @Override
@@ -27,6 +30,7 @@ public class RegistroSuenoServiceImplements implements RegistroSuenoService {
 
     @Override
     public RegistroSueno saveRegistroSueno (RegistroSueno registroSueno) throws RuntimeException {
+        registroSuenoValidator.RegistroSuenoValidar(registroSueno);
         return registroSuenoRepository.save(registroSueno);
     }
 
@@ -41,6 +45,7 @@ public class RegistroSuenoServiceImplements implements RegistroSuenoService {
         RegistroSueno registroSuenoExistente = registroSuenoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("El registro sueño no se ha encontrado con id: " + id));
 
+        registroSuenoValidator.RegistroSuenoValidar(registroSueno);
         registroSuenoExistente.setFecha_sueño(registroSueno.getFecha_sueño());
         registroSuenoExistente.setHoras_dormidas(registroSueno.getHoras_dormidas());
         registroSuenoExistente.setCalidad_sueño(registroSueno.getCalidad_sueño());
