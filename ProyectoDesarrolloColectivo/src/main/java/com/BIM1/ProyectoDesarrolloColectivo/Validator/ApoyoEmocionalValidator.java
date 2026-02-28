@@ -25,9 +25,9 @@ public class ApoyoEmocionalValidator {
             throw new CustomException("El nombre del autor es demasiado largo, solo se permiten 50 digitos");
         }
 
-        if (!apoyoEmocional.getNivelAnimo().contains("Mal") ||
+        if (!(apoyoEmocional.getNivelAnimo().contains("Mal") ||
                 apoyoEmocional.getNivelAnimo().contains("Bien") ||
-                apoyoEmocional.getNivelAnimo().contains("Mas o menos")){
+                apoyoEmocional.getNivelAnimo().contains("Mas o menos"))){
             throw new CustomException("Nivel de ánimo inválido. Solo se permite: Mal, Bien o Mas o menos");
         }
 
@@ -44,7 +44,7 @@ public class ApoyoEmocionalValidator {
     }
 
     public void ApoyoEmocionalValidacionId(Integer id){
-        if (apoyoEmocionalRepository.existsById(id)){
+        if (!apoyoEmocionalRepository.existsById(id)){
             throw new CustomException("apoyo Emocional no encontrado");
         }
     }
