@@ -24,12 +24,9 @@ public class RachaLecturaController {
     }
 
     @GetMapping("/usuario/{idUsuario}/entre")
-    public List<RachaLectura> getByUsuarioYRango(
-            @PathVariable Integer idUsuario,
-            @RequestParam String inicio,
-            @RequestParam String fin) {
+    public List<RachaLectura> getByUsuarioYRango(@PathVariable Integer idUsuario, @RequestParam String inicio, @RequestParam String fin) {
 
-        LocalDate ini = LocalDate.parse(inicio);  // formato esperado: YYYY-MM-DD
+        LocalDate ini = LocalDate.parse(inicio);
         LocalDate fn  = LocalDate.parse(fin);
 
         return rachaLecturaService.getRachasByUsuarioAndRango(idUsuario, ini, fn);

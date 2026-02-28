@@ -34,18 +34,17 @@ public class RachaEjercicioController {
 
 
 
-
     @PostMapping("/agregar")
-public ResponseEntity<Object> agregarRacha(@RequestBody RachaEjercicio racha) {
-    try { RachaEjercicio nueva = rachaEjercicioService.saveRacha(racha);
-        return new ResponseEntity<>(nueva, HttpStatus.CREATED);
-    } catch (IllegalArgumentException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    public ResponseEntity<Object> agregarRacha(@jakarta.validation.Valid @RequestBody RachaEjercicio racha) {
+        try {
+            RachaEjercicio nueva = rachaEjercicioService.saveRacha(racha);
+            return new ResponseEntity<>(nueva, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
-}
-
 
 
 
