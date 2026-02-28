@@ -2,6 +2,7 @@ package com.BIM1.ProyectoDesarrolloColectivo.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "usuario")
@@ -13,6 +14,7 @@ public class Usuario {
     private Integer id_usuario;
 
     @NotBlank(message = "El nombre no puede estar vacío")
+    @Size(max = 150, message = "El nombre no puede tener más de 150 caracteres")
     @Column(name = "nombre_completo")
     private String nombre_completo;
 
@@ -21,6 +23,7 @@ public class Usuario {
     private String correo_usuario;
 
     @NotBlank(message = "La contraseña no puede estar vacío")
+    @Size(max = 100, message = "La contraseña no puede tener más de 100 caracteres")
     @Column(name = "contraseña")
     private String contraseña;
 
