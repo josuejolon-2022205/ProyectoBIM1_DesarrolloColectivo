@@ -36,16 +36,22 @@ public class RachaEjercicioServiceImplements implements RachaEjercicioService {
                 .collect(Collectors.toList());
     }
 
+
     @Override
     public RachaEjercicio saveRacha(RachaEjercicio racha) throws RuntimeException {
-        return repository.save(racha);
+        RachaEjercicio saved = repository.save(racha);
+        return repository.findById(saved.getIdRachaEjercicio()).orElse(saved);
     }
+
+
 
     @Override
     public RachaEjercicio addRacha(Integer idUsuario, LocalDate fecha) throws RuntimeException {
         RachaEjercicio r = new RachaEjercicio();
         r.setFkIdUsuario(idUsuario);
         r.setFecha(fecha);
-        return repository.save(r);
+
+        RachaEjercicio saved = repository.save(r);
+        return repository.findById(saved.getIdRachaEjercicio()).orElse(saved);
     }
 }
