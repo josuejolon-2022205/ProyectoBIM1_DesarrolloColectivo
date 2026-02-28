@@ -38,7 +38,9 @@ public class RachaLecturaServiceImplements implements RachaLecturaService {
 
     @Override
     public RachaLectura saveRacha(RachaLectura racha) throws RuntimeException {
-        return repository.save(racha);
+        RachaLectura saved = repository.save(racha);
+        return repository.findById(saved.getIdRachaLectura()).orElse(saved);
+
     }
 
     @Override
@@ -46,6 +48,9 @@ public class RachaLecturaServiceImplements implements RachaLecturaService {
         RachaLectura r = new RachaLectura();
         r.setFkIdUsuario(idUsuario);
         r.setFecha(fecha);
-        return repository.save(r);
+
+        RachaLectura saved = repository.save(r);
+        return repository.findById(saved.getIdRachaLectura()).orElse(saved);
+
     }
 }
