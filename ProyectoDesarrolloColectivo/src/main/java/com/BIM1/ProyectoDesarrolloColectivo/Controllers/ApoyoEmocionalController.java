@@ -31,8 +31,8 @@ public class ApoyoEmocionalController {
         }
     }
 
-    @PutMapping
-    public ResponseEntity<Object> updateApoyoEmocional(Integer id,@Valid @RequestBody ApoyoEmocional apoyoEmocional){
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateApoyoEmocional(@PathVariable Integer id,@Valid @RequestBody ApoyoEmocional apoyoEmocional){
         try {
             ApoyoEmocional updateApoyo = apoyoEmocionalService.updateFraseMotivadora(id, apoyoEmocional);
             return new ResponseEntity<>(updateApoyo,HttpStatus.OK);
