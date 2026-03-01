@@ -9,13 +9,15 @@
     <script src='main.js'></script>
 </head>
 <body>
-   <nav>
+ 
+<nav>
   <a href="index.html" class="nav-logo">Evoluciona</a>
   <ul class="nav-links">
     <li><a href="index.html">Inicio</a></li>
   </ul>
 </nav>
 
+<!-- HEADER -->
 <div class="page-header">
   <div class="page-header-left">
     <div class="page-tag">Tu entrenamiento</div>
@@ -26,6 +28,7 @@
 
 <div class="ejercicios-container">
 
+  <!-- Stats pills -->
   <div class="stats-pills">
     <div class="stat-pill">
       <div class="stat-pill-num">5</div>
@@ -45,6 +48,7 @@
     </div>
   </div>
 
+  <!-- Toolbar -->
   <div class="toolbar">
     <div class="search-wrap">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -158,7 +162,52 @@
   </div>
 </div>
 
+<!-- FORMULARIO AGREGAR / EDITAR -->
+<div class="form-section-wrap">
+  <div class="form-section">
+    <div class="form-section-header">
+      <h2 class="form-section-title">Nuevo <em>Ejercicio</em></h2>
+      <p class="form-section-sub">Completa los campos para registrar un ejercicio en una rutina.</p>
+    </div>
 
+    <div class="form-group">
+      <label class="form-label">Nombre del ejercicio</label>
+      <input type="text" class="form-input" placeholder="Ej. Sentadillas" maxlength="60"/>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Series</label>
+        <input type="number" class="form-input" placeholder="4" min="1" max="20"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Repeticiones</label>
+        <input type="number" class="form-input" placeholder="12" min="0" max="200"/>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Tiempo (seg)</label>
+        <input type="number" class="form-input" placeholder="0 si no aplica" min="0" max="300"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Descanso (seg)</label>
+        <input type="number" class="form-input" placeholder="60" min="0" max="600"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">ID de la rutina</label>
+      <input type="number" class="form-input" placeholder="ID de la rutina" min="1"/>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-secondary">Cancelar</button>
+      <button class="btn-primary">Guardar ejercicio</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
