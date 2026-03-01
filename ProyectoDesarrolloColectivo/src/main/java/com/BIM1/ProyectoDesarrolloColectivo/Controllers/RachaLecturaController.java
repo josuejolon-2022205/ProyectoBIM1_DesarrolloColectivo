@@ -55,7 +55,7 @@ public class RachaLecturaController {
 
     @PostMapping("/usuario/{idUsuario}/fecha/{fecha}")
     public ResponseEntity<Object> crearRachaPorUsuario( @PathVariable Integer idUsuario, @PathVariable String fecha) {
-<<<<<<< HEAD
+
         try {
             LocalDate fechaParseada;
             try {
@@ -63,11 +63,9 @@ public class RachaLecturaController {
             } catch (Exception e) {
                 return ResponseEntity.badRequest().body("Formato de fecha inválido. Usa YYYY-MM-DD.");
             }
-=======
-        try {LocalDate fechaParseada;
             try { fechaParseada = LocalDate.parse(fecha);
             } catch (Exception e) { return ResponseEntity.badRequest().body("Formato de fecha inválido. Usa YYYY-MM-DD."); }
->>>>>>> 0c382246f2925d9a5cccb5d4ae9b1ce9b7e3e4c0
+
             LocalDate hoy = LocalDate.now();
             if (fechaParseada.isBefore(hoy)) {
                 return ResponseEntity.badRequest().body("La fecha no puede ser pasada");
