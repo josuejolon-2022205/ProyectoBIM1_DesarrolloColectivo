@@ -19,17 +19,17 @@ public class UsuarioValidator {
     public void UsuarioValidar(Usuario usuario) {
 
         List<Usuario> usuarios = usuarioRepository.findAll();
-        String correoUsuario = usuario.getCorreo_usuario();
+        String correoUsu = usuario.getCorreoUsuario();
 
-        correoUsuario = correoUsuario.trim().toLowerCase();
+        correoUsu = correoUsu.trim().toLowerCase();
 
-        if (!(correoUsuario.endsWith("@gmail.com") || correoUsuario.endsWith("@outlook.com") || correoUsuario.endsWith("@yahoo.com"))) {
+        if (!(correoUsu.endsWith("@gmail.com") || correoUsu.endsWith("@outlook.com") || correoUsu.endsWith("@yahoo.com"))) {
             throw new Exception(
                     "El correo debe ser @gmail.com, @outlook.com o @yahoo.com");
         }
 
         for (Usuario correoUsua : usuarios) {
-            if (correoUsuario.equals(correoUsua.getCorreo_usuario())){
+            if (correoUsu.equals(correoUsua.getCorreoUsuario())){
                 throw new IllegalArgumentException("El correo del usuario ya existe");
             }
         }
