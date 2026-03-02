@@ -2,7 +2,6 @@ package com.BIM1.ProyectoDesarrolloColectivo.Validator;
 
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.Rutina;
 import com.BIM1.ProyectoDesarrolloColectivo.Exceptions.Exception;
-import com.BIM1.ProyectoDesarrolloColectivo.Repository.RutinaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -10,11 +9,6 @@ import java.util.List;
 
 @Component
 public class RutinaValidator {
-    private final RutinaRepository rutinaRepository;
-
-    public RutinaValidator(RutinaRepository rutinaRepository) {
-        this.rutinaRepository = rutinaRepository;
-    }
 
     public void validarRutina(Rutina rutina){
 
