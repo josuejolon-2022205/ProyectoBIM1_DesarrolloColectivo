@@ -24,7 +24,6 @@
 }
 .estado-tab.active .tab-count { background: var(--verde-menta); color: var(--verde-oscuro); }
 
-/* ── TOOLBAR ── */
 .toolbar {
   display: flex; align-items: center; gap: 1rem;
   margin-bottom: 2rem; flex-wrap: wrap;
@@ -40,14 +39,12 @@
 }
 .search-input:focus { border-color:var(--verde-menta); }
 
-/* ── GRID DE LIBROS ── */
 .libros-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.4rem;
 }
 
-/* ── LIBRO CARD ── */
 .libro-card {
   background: var(--blanco);
   border-radius: var(--radio-lg);
@@ -62,7 +59,6 @@
   box-shadow: 0 14px 36px var(--sombra-hover);
 }
 
-/* "Lomo" del libro */
 .libro-spine {
   height: 6px;
   background: linear-gradient(90deg, var(--cafe), var(--cafe-claro));
