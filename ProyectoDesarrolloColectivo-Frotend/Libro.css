@@ -92,7 +92,6 @@
 .badge-leyendo    { background: rgba(126,176,155,0.2);  color: var(--verde-oscuro); }
 .badge-terminado  { background: rgba(45,74,62,0.1);     color: var(--verde-oscuro); }
 
-/* Progreso */
 .libro-progreso { padding: 0 1.8rem 1.2rem; }
 .progreso-texto {
   display: flex; justify-content: space-between;
