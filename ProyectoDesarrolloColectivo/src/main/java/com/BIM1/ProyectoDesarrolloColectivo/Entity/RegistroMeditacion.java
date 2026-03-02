@@ -11,27 +11,27 @@ public class RegistroMeditacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idRegistroMeditacion")
+    @Column(name = "id_Registro_Meditacion")
     private Integer id_registro_meditacion;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipoMeditacion")
+    @Column(name = "tipo_Meditacion")
     @NotNull(message = "Seleccione un tipo de meditacion")
     private TipoMeditacion tipo_meditacion;
 
-    @Column(name = "duracionMinutos")
+    @Column(name = "duracion_Minutos")
     @NotNull(message = "Seleccione la cantidad de minutos")
     private Integer duracion_minutos;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "nivelDificultad")
+    @Column(name = "nivel_Dificultad")
     @NotNull(message = "Seleccione un nivel de dificultad")
     private NivelDificultad nivel_dificultad;
 
-    @Column(name = "fechaRegistro")
+    @Column(name = "fecha_Registro")
     private LocalDateTime fecha_registro;
 
-    @Column(name = "FKidUsuario")
+    @Column(name = "fk_id_Usuario")
     @NotNull(message = "la llave foranea no puede estar vacia")
     private Integer fk_id_usuario;
 
