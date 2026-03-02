@@ -2,7 +2,6 @@ package com.BIM1.ProyectoDesarrolloColectivo.Validator;
 
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.Libro;
 import com.BIM1.ProyectoDesarrolloColectivo.Exceptions.Exception;
-import com.BIM1.ProyectoDesarrolloColectivo.Repository.LibroRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -10,11 +9,6 @@ import java.util.List;
 
 @Component
 public class LibroValidator {
-    private final LibroRepository libroRepository;
-
-    public LibroValidator(LibroRepository libroRepository) {
-        this.libroRepository = libroRepository;
-    }
 
     public void libroValidaciones(Libro libro){
 
