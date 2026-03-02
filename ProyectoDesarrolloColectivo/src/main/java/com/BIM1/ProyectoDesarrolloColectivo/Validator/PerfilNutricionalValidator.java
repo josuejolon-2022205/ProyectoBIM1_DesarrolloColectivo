@@ -1,8 +1,6 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Validator;
 
 import com.BIM1.ProyectoDesarrolloColectivo.Entity.PerfilNutricional;
-import com.BIM1.ProyectoDesarrolloColectivo.Repository.PerfilNutricionalRepository;
-
 import com.BIM1.ProyectoDesarrolloColectivo.Exceptions.Exception;
 
 import org.springframework.stereotype.Component;
@@ -12,12 +10,6 @@ import java.util.List;
 
 @Component
 public class PerfilNutricionalValidator {
-
-    private final PerfilNutricionalRepository perfilNutricionalRepository;
-
-    public PerfilNutricionalValidator(PerfilNutricionalRepository perfilNutricionalRepository) {
-        this.perfilNutricionalRepository = perfilNutricionalRepository;
-    }
 
     public void PerfilNutricionalValidaciones(PerfilNutricional perfil) {
 
