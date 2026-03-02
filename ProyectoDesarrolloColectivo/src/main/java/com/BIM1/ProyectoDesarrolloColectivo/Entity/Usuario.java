@@ -20,7 +20,7 @@ public class Usuario {
 
     @NotBlank(message = "El correo no puede estar vacío")
     @Column(name = "correo_usuario")
-    private String correo_usuario;
+    private String correoUsuario;
 
     @NotBlank(message = "La contraseña no puede estar vacío")
     @Size(max = 100, message = "La contraseña no puede tener más de 100 caracteres")
@@ -43,12 +43,12 @@ public class Usuario {
         this.nombre_completo = nombre_completo;
     }
 
-    public String getCorreo_usuario() {
-        return correo_usuario;
+    public String getCorreoUsuario() {
+        return correoUsuario;
     }
 
-    public void setCorreo_usuario(String correo_usuario) {
-        this.correo_usuario = correo_usuario;
+    public void setCorreoUsuario(String correoUsuario) {
+        this.correoUsuario = correoUsuario;
     }
 
     public String getContraseña() {
