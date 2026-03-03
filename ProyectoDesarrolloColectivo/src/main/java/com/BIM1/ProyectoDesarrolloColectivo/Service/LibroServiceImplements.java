@@ -50,6 +50,7 @@ public class LibroServiceImplements  implements LibroService {
             libros.setEstado(libro.getEstado());
             libros.setCantidad_pag(libro.getCantidad_pag());
             libros.setCantidad_leido(libro.getCantidad_leido());
+            libros.setFk_id_usuario(libro.getFk_id_usuario());
 
         }else{
             throw new Exception("el id del libro no existe");
