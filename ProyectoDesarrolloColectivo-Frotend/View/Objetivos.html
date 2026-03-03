@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mis Objetivos</title>
+    <link rel="stylesheet" href="../Style/Objetivos.css">
 </head>
 <body>
-    
+
+    <!-- PAGINA PRINCIPAL -->
+    <section id="inicio" class="pagina">
+        <h1>🎯 Mis Objetivos</h1>
+
+        <a href="#spring" class="objetivo">
+            <span>Aprender Spring Boot</span>
+            <span class="estado pendiente">PENDIENTE</span>
+            <div class="ladoDerecho">
+                <button class="btn editar">✏</button>
+                <button class="btn eliminar">🗑</button>
+            </div>
+        </a>
+
+        <a href="#libros" class="objetivo">
+            <span>Leer 5 libros</span>
+            <span class="estado completado">COMPLETADO</span>
+            <div class="ladoDerecho">
+                <button class="btn editar">✏</button>
+                <button class="btn eliminar">🗑</button>
+            </div>
+        </a>
+
+        <a href="#boxeo" class="objetivo">
+            <span>Practicar boxeo</span>
+            <span class="estado enProceso">EN PROCESO</span>
+            <div class="ladoDerecho">
+                <button class="btn editar">✏</button>
+                <button class="btn eliminar">🗑</button>
+            </div>
+        </a>
+
+    </section>
+
+
+    <!-- PAGINA SPRING -->
+    <section id="spring" class="pagina">
+        <h1>Aprender Spring Boot</h1>
+        <p>Este objetivo consiste en dominar Spring Boot, crear APIs REST y conectar con MySQL.</p>
+
+        <a href="#inicio" class="volver">⬅ Regresar</a>
+    </section>
+
+
+    <!-- PAGINA LIBROS -->
+    <section id="libros" class="pagina">
+        <h1>Leer 5 libros</h1>
+        <p>Leer libros de programación y crecimiento personal este año.</p>
+
+        <a href="#inicio" class="volver">⬅ Regresar</a>
+    </section>
+
 </body>
 </html>
