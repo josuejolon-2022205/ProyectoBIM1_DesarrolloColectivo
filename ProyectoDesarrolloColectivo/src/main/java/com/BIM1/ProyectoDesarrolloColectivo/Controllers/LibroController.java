@@ -26,43 +26,26 @@ public class LibroController {
 
     @PostMapping
     public ResponseEntity<Object> saveLibro(@Valid @RequestBody Libro libro){
-        try {
             Libro libro1 = libroService.saveLibro(libro);
             return new ResponseEntity<>(libro1, HttpStatus.CREATED);
-        }catch (IllegalArgumentException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-
-        }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateLibro(@PathVariable Integer id, @Valid @RequestBody Libro libro){
-        try {
             Libro libro1 = libroService.updateLibro(id, libro);
             return new ResponseEntity<>(libro1, HttpStatus.OK);
-        }catch (IllegalArgumentException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteLibro(@PathVariable Integer id){
-        try {
             libroService.deleteLibro(id);
             return ResponseEntity.noContent().build();
-        }catch (ObjectNotFoundException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-
-        }
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getLibroById(@PathVariable Integer id){
-        try {
             Libro libro = libroService.getLibroById(id);
             return ResponseEntity.ok(libro);
-        }catch (ObjectNotFoundException e){
-            return ResponseEntity.notFound().build();
-        }
+
     }
 }
