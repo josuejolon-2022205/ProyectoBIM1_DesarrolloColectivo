@@ -31,13 +31,13 @@ public class Ejercicio {
 
     @Column(name = "tiempo_ejercicio")
     @NotNull(message = "el tiempo del ejercicio es obligatorio")
-    @Positive(message = "el tiempo del ejercicio no puede ser menor a 0")
+    @PositiveOrZero(message = "el tiempo del ejercicio no puede ser menor a 0")
     @Max(value = 3600, message = "el tiempo del ejercicio no puede ser mayor a una hora")
     private int tiempo_ejercicio;
 
     @Column(name = "descanso_ejercicio")
     @NotNull(message = "el descanso del ejercicio es obligatorio")
-    @Positive(message = "el descanso del ejercicio no puede ser menor a 0")
+    @PositiveOrZero(message = "el descanso del ejercicio no puede ser menor a 0")
     @Max(value = 600, message = "el tiempo del descanso no puede ser mayor a 10 minutos")
     private int descanso_ejercicio;
 
