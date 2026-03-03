@@ -12,7 +12,7 @@ public class RutinaValidator {
 
     public void validarRutina(Rutina rutina){
 
-        List<String> diasValidos = Arrays.asList("lunes", "martes", "miércoles", "jueves", "sábado", "sabado", "sabados", "sábados", "domingo", "todos los días", "todos los dias");
+        List<String> diasValidos = Arrays.asList("Lunes", "Martes", "Miércoles", "Jueves","Viernes", "Sábado", "Sabado", "Sabados", "Sábados", "Domingo", "Todos los días", "Todos los dias");
         String[] diasIngresados = rutina.getDias_semana().split(",");
 
         for(String dia : diasIngresados){
