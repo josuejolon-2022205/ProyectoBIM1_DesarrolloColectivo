@@ -16,7 +16,7 @@ public class PerfilNutricional {
     @Column(name = "peso_kg")
     @NotNull(message = "el peso no puede estar vacio o nulo")
     @Positive(message = "el peso debe de ser mayor a 0")
-    @Max(value = 300, message = "el peso no puede ser mayor a 500")
+    @Max(value = 300, message = "el peso no puede ser mayor a 300")
     private int peso_kg;
 
     @Column(name = "altura")
