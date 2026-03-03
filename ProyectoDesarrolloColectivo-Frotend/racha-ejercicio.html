@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Racha de Ejercicio</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    /* Detalles mínimos para esta página, sin tocar estilos globales */
+    .cabecera{
+      text-align:center; 
+      margin-bottom: 16px;
+    }
+    .bloque{
+      width: 100%;
+      max-width: 820px;
+      background: #fff;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 0 auto 16px auto;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    }
+    .fila{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width:720px){ .fila{ grid-template-columns:1fr; } }
+    .tabla{ width:100%; border-collapse: collapse; font-size:14px; }
+    .tabla th, .tabla td{ border:1px solid var(--borde); padding:8px; text-align:left; }
+    .tabla th{ background: var(--crema); color: var(--verde-oscuro); }
+    .acciones{ margin-top: 8px; display:flex; gap:10px; flex-wrap: wrap; }
+    .btn-secundario{
+      background: var(--cafe);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <h1 class="titulo cabecera">Racha de Ejercicio</h1>
+
+    <!-- Formulario muy simple (solo presentación) -->
+    <section class="bloque">
+      <h2 class="subtitulo">Agregar racha</h2>
+      <form class="formulario">
+        <div class="fila">
+          <div>
+            <label for="usuario">ID de usuario</label>
+            <input id="usuario" type="number" placeholder="Ej. 1" required>
+          </div>
+          <div>
+            <label for="fecha">Fecha</label>
+            <input id="fecha" type="date" required>
+          </div>
+        </div>
+        <div class="acciones">
+          <button type="submit" class="btn">Guardar</button>
+          <button type="button" class="btn-secundario">Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Tabla sencilla con datos de ejemplo -->
+    <section class="bloque">
+      <h2 class="subtitulo">Historial (ejemplo)</h2>
+      <table class="tabla">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+            <th>Días consecutivos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>11</td>
+            <td>1</td>
+            <td>2025-03-02</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>1</td>
+            <td>2025-03-03</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>1</td>
+            <td>2025-03-04</td>
+            <td>3</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="footer">© 2026 Desarrollo Colectivo</p>
+  </div>
+
+</body>
+</html>
