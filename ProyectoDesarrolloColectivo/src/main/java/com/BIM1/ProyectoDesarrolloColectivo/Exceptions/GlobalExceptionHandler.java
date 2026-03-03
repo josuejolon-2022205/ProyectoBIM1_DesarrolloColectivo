@@ -1,6 +1,7 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Exceptions;
 
 import jakarta.validation.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -30,9 +31,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "JSON inválido o tipo de dato incorrecto."));
     }
 
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<?> validarFk(ConstraintViolationException e) {
-        String msg = e.getConstraintViolations().iterator().next().getMessage();
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<?> validarFk(DataIntegrityViolationException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Error", "Error en las llaves foraneas"));
     }
 
