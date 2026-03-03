@@ -26,44 +26,26 @@ public class RutinaController {
 
     @PostMapping
     public ResponseEntity<Object> saveRutina(@Valid @RequestBody Rutina rutina){
-        try {
             Rutina rutina1 = rutinaService.saveRutina(rutina);
             return new ResponseEntity<>(rutina1, HttpStatus.CREATED);
-        }catch (IllegalArgumentException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateRutina(@PathVariable Integer id, @Valid @RequestBody Rutina rutina){
-        try {
             Rutina rutina1 = rutinaService.updateRutina(id, rutina);
             return new ResponseEntity<>(rutina1, HttpStatus.OK);
-        }catch (IllegalArgumentException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteRutina(@PathVariable Integer id){
-        try {
             rutinaService.deleteRutina(id);
             return ResponseEntity.noContent().build();
-        }catch (ObjectNotFoundException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-
-        }
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getRutinaById(@PathVariable Integer id){
-        try {
             Rutina rutina = rutinaService.getRutinaById(id);
             return ResponseEntity.ok(rutina);
-        }catch (ObjectNotFoundException e){
-            return  ResponseEntity.notFound().build();
-
-        }
     }
 
 }
