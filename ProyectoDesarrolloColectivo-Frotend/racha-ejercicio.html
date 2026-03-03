@@ -1,52 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Racha de Ejercicio</title>
-  <link rel="stylesheet" href="estilos.css">
-  <style>
-    
-    .cabecera{
-      text-align:center; 
-      margin-bottom: 16px;
-    }
-    .bloque{
-      width: 100%;
-      max-width: 820px;
-      background: #fff;
-      border: 1px solid var(--borde);
-      border-radius: 12px;
-      padding: 16px;
-      margin: 0 auto 16px auto;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.05);
-    }
-    .fila{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width:720px){ .fila{ grid-template-columns:1fr; } }
-    .tabla{ width:100%; border-collapse: collapse; font-size:14px; }
-    .tabla th, .tabla td{ border:1px solid var(--borde); padding:8px; text-align:left; }
-    .tabla th{ background: var(--crema); color: var(--verde-oscuro); }
-    .acciones{ margin-top: 8px; display:flex; gap:10px; flex-wrap: wrap; }
-    .btn-secundario{
-      background: var(--cafe);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="rachas.css">
 </head>
 <body>
 
-  <div class="contenedor">
-    <h1 class="titulo cabecera">Racha de Ejercicio</h1>
+  <header class="barra">Racha de Ejercicio</header>
 
-    
-    <section class="bloque">
-      <h2 class="subtitulo">Agregar racha</h2>
-      <form class="formulario">
-        <div class="fila">
+  <main class="wrap">
+
+    <section class="card">
+      <h2 class="h2">Agregar racha</h2>
+      <form>
+        <div class="grid">
           <div>
             <label for="usuario">ID de usuario</label>
             <input id="usuario" type="number" placeholder="Ej. 1" required>
@@ -58,48 +27,27 @@
         </div>
         <div class="acciones">
           <button type="submit" class="btn">Guardar</button>
-          <button type="button" class="btn-secundario">Limpiar</button>
+          <button type="button" class="btn sec">Limpiar</button>
         </div>
       </form>
     </section>
 
-    
-    <section class="bloque">
-      <h2 class="subtitulo">Historial (ejemplo)</h2>
-      <table class="tabla">
+    <section class="card">
+      <h2 class="h2">Historial (ejemplo)</h2>
+      <table>
         <thead>
-          <tr>
-            <th>ID</th>
-            <th>Usuario</th>
-            <th>Fecha</th>
-            <th>Días consecutivos</th>
-          </tr>
+          <tr><th>ID</th><th>Usuario</th><th>Fecha</th><th>Días consecutivos</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>11</td>
-            <td>1</td>
-            <td>2025-03-02</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>12</td>
-            <td>1</td>
-            <td>2025-03-03</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>13</td>
-            <td>1</td>
-            <td>2025-03-04</td>
-            <td>3</td>
-          </tr>
+          <tr><td>11</td><td>1</td><td>2025-03-02</td><td>1</td></tr>
+          <tr><td>12</td><td>1</td><td>2025-03-03</td><td>2</td></tr>
+          <tr><td>13</td><td>1</td><td>2025-03-04</td><td>3</td></tr>
         </tbody>
       </table>
     </section>
 
-    <p class="footer">Proyecto Desarrollo Personal</p>
-  </div>
+    <p class="foot">Proyecto Desarrollo Personal</p>
+  </main>
 
 </body>
 </html>
