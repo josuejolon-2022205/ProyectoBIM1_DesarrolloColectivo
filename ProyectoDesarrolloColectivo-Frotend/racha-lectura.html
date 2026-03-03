@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Racha de Lectura</title>
+  estilos.css
+
+  
+  <style>
+   
+    :root{
+      --verde-oscuro:#2D4A3E;
+      --verde-menta:#7EB09B;
+      --crema:#F5F0E8;
+      --cafe:#8B6F47;
+      --borde:#e6e6e6;
+    }
+
+    .topbar{
+      background: var(--verde-oscuro);
+      color: #fff;
+      padding: 12px 16px;
+      font-weight: bold;
+      letter-spacing: .3px;
+    }
+
+    .contenedor{
+      min-height: calc(100vh - 52px);
+      background: var(--crema);
+      padding: 20px 16px 24px;
+      display: grid;
+      gap: 16px;
+      place-items: start center;
+    }
+
+
+    .bloque{
+      width: 100%;
+      max-width: 900px;
+      background: #fff;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.05);
+    }
+
+    .titulo-bloque{
+      margin: 0 0 12px 0;
+      padding: 10px 12px;
+      background: var(--verde-oscuro);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+
+    .formulario{
+      display: grid;
+      gap: 10px;
+    }
+
+    .fila{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 720px){
+      .fila{ grid-template-columns: 1fr; }
+    }
+
+    label{ font-size: 14px; color: #555; }
+    input{
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--borde);
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+      background: #fff;
+    }
+    input:focus{
+      border-color: var(--verde-menta);
+      box-shadow: 0 0 0 3px rgba(126,176,155,.25);
+    }
+
+    .acciones{
+      margin-top: 6px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn{
+      padding: 10px 12px;
+      background: var(--verde-oscuro);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn-secundario{
+      padding: 10px 12px;
+      background: var(--cafe);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .tabla{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .tabla th, .tabla td{
+      border: 1px solid var(--borde);
+      padding: 8px;
+      text-align: left;
+    }
+    .tabla th{
+      background: var(--verde-menta);
+      color: #14342b;
+    }
+
+    .footer{
+      text-align: center;
+      color: #666;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    Racha de Lectura
+  </header>
+
+  <main class="contenedor">
+
+    <section class="bloque">
+      <h2 class="titulo-bloque">Agregar racha</h2>
+
+      <form class="formulario">
+        <div class="fila">
+          <div>
+            <label for="usuario">ID de usuario</label>
+            <input id="usuario" type="number" placeholder="Ej. 1" required />
+          </div>
+          <div>
+            <label for="fecha">Fecha</label>
+            <input id="fecha" type="date" required />
+          </div>
+        </div>
+
+        <div class="acciones">
+          <button type="submit" class="btn">Guardar</button>
+          <button type="button" class="btn-secundario">Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+
+    <section class="bloque">
+      <h2 class="titulo-bloque">Historial (ejemplo)</h2>
+
+      <table class="tabla">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+            <th>Días consecutivos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>21</td>
+            <td>1</td>
+            <td>2025-03-02</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>22</td>
+            <td>1</td>
+            <td>2025-03-03</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>23</td>
+            <td>1</td>
+            <td>2025-03-04</td>
+            <td>3</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="footer">Proyecto Desarrollo Personal</p>
+  </main>
+
+</body>
+</html>
