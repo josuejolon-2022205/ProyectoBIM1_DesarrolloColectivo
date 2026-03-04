@@ -16,8 +16,8 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> validarCampos(Exception e){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error:", e.getMessage()));
+    public ResponseEntity<?> validarCampos(Exception ex){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error:", ex.getMessage()));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -38,6 +38,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<?> validarId(IllegalArgumentException e){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error", "el id no se encontro"));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error", "el id no se encontró"));
     }
 }
