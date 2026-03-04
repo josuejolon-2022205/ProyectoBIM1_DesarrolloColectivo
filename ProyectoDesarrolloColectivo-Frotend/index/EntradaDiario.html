@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Entrada Diario</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../Styles/Base.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../Styles/EntradaDiario.css'>
+    <script src='../Script/main.js'></script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Evoluciona</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inicio</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-left">
+    <div class="page-tag">Tu bienestar</div>
+    <h1 class="page-title">Mi <em>Diario</em></h1>
+  </div>
+  <button class="btn-primary">+ Nueva entrada</button>
+</div>
+
+<div class="entradas-container">
+
+  <div class="stats-pills">
+    <div class="stat-pill">
+      <div class="stat-pill-num">10</div>
+      <div class="stat-pill-label">Entradas</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-pill-num">10</div>
+      <div class="stat-pill-label">Usuarios</div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="search-wrap">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" class="search-input" placeholder="Buscar entrada..."/>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="entradas-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Que paso</th>
+          <th>Plan mañana</th>
+          <th>Reflexion</th>
+          <th>Usuario</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td><span class="stat-badge">2025-01-01</span></td>
+          <td>
+            <div class="td-nombre">
+              <div>
+                <strong>Empece el año con energia.</strong>
+                <small>ID #1</small>
+              </div>
+            </div>
+          </td>
+          <td>Meditar 10 min al despertar.</td>
+          <td>Pequeños pasos hacen grandes cambios.</td>
+          <td><span class="stat-badge">#1</span></td>
+          <td class="td-actions">
+            <div class="td-actions-inner">
+              <button class="btn-icon btn-edit">&#9998;</button>
+              <button class="btn-icon btn-delete">&#128465;</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="stat-badge">2025-01-02</span></td>
+          <td>
+            <div class="td-nombre">
+              <div>
+                <strong>Reunion dificil en el trabajo.</strong>
+                <small>ID #2</small>
+              </div>
+            </div>
+          </td>
+          <td>Preparar mejor mis presentaciones.</td>
+          <td>Aprender de los errores es crecer.</td>
+          <td><span class="stat-badge">#2</span></td>
+          <td class="td-actions">
+            <div class="td-actions-inner">
+              <button class="btn-icon btn-edit">&#9998;</button>
+              <button class="btn-icon btn-delete">&#128465;</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="stat-badge">2025-01-03</span></td>
+          <td>
+            <div class="td-nombre">
+              <div>
+                <strong>Sali a correr por primera vez.</strong>
+                <small>ID #3</small>
+              </div>
+            </div>
+          </td>
+          <td>Repetir el ejercicio manana.</td>
+          <td>El cuerpo agradece el movimiento.</td>
+          <td><span class="stat-badge">#3</span></td>
+          <td class="td-actions">
+            <div class="td-actions-inner">
+              <button class="btn-icon btn-edit">&#9998;</button>
+              <button class="btn-icon btn-delete">&#128465;</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="stat-badge">2025-01-04</span></td>
+          <td>
+            <div class="td-nombre">
+              <div>
+                <strong>Tiempo con mi familia.</strong>
+                <small>ID #4</small>
+              </div>
+            </div>
+          </td>
+          <td>Llamar a un amigo que extrano.</td>
+          <td>Las relaciones son lo mas valioso.</td>
+          <td><span class="stat-badge">#4</span></td>
+          <td class="td-actions">
+            <div class="td-actions-inner">
+              <button class="btn-icon btn-edit">&#9998;</button>
+              <button class="btn-icon btn-delete">&#128465;</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="stat-badge">2025-01-05</span></td>
+          <td>
+            <div class="td-nombre">
+              <div>
+                <strong>Lei 30 paginas de un libro.</strong>
+                <small>ID #5</small>
+              </div>
+            </div>
+          </td>
+          <td>Continuar leyendo cada noche.</td>
+          <td>Leer transforma la mente.</td>
+          <td><span class="stat-badge">#5</span></td>
+          <td class="td-actions">
+            <div class="td-actions-inner">
+              <button class="btn-icon btn-edit">&#9998;</button>
+              <button class="btn-icon btn-delete">&#128465;</button>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<!-- formulario nueva entrada -->
+<div class="form-section-wrap">
+  <div class="form-section">
+
+    <div class="form-section-header">
+      <h2 class="form-section-title">Nueva <em>Entrada</em></h2>
+      <p class="form-section-sub">Llena los campos para guardar una entrada del diario.</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Fecha</label>
+      <input type="date" class="form-input" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Que paso hoy?</label>
+      <textarea class="form-input form-textarea" placeholder="Escribe lo que paso durante el dia..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Plan para manana</label>
+      <input type="text" class="form-input" placeholder="Ej. Meditar 10 minutos al despertar." />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Reflexion</label>
+      <input type="text" class="form-input" placeholder="Ej. Pequenos pasos hacen grandes cambios." />
+    </div>
+    <div class="form-group">
+      <label class="form-label">ID Usuario</label>
+      <input type="number" class="form-input" placeholder="ID del usuario" min="1" />
+    </div>
+    <div class="form-actions">
+      <button class="btn-secondary">Cancelar</button>
+      <button class="btn-primary">Guardar</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
