@@ -1,284 +1,244 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evoluciona</title>
-
-<style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background-color:#F5F0E8;
-    color:#2D4A3E;
-}
-
-nav{
-    background:#2D4A3E;
-    padding:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:15px;
-    font-size:14px;
-}
-
-.hero{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:60px 40px;
-}
-
-.hero-text{
-    width:50%;
-}
-
-.hero-text h1{
-    font-size:36px;
-}
-
-.hero-text p{
-    font-size:16px;
-    line-height:1.6;
-}
-
-.hero-buttons a{
-    display:inline-block;
-    margin-right:10px;
-    padding:10px 20px;
-    background:#2D4A3E;
-    color:white;
-    text-decoration:none;
-}
-
-.hero-image{
-    width:40%;
-    height:250px;
-    background:#ddd;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.stats{
-    display:flex;
-    justify-content:space-around;
-    background:#2D4A3E;
-    color:white;
-    padding:30px;
-}
-
-.stat{
-    text-align:center;
-}
-
-.section{
-    padding:50px 40px;
-}
-
-.section h2{
-    font-size:28px;
-    margin-bottom:20px;
-}
-
-.media{
-    display:flex;
-    gap:30px;
-    margin-bottom:40px;
-}
-
-.media img{
-    width:300px;
-    height:200px;
-    object-fit:cover;
-    background:#ccc;
-}
-
-.media-text{
-    flex:1;
-}
-
-.modules{
-    background:#2D4A3E;
-    color:white;
-    padding:50px 40px;
-}
-
-.module-list{
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-}
-
-.module{
-    background:#3f6658;
-    padding:20px;
-    width:30%;
-}
-
-.recent{
-    padding:50px 40px;
-}
-
-.cards{
-    display:flex;
-    gap:20px;
-}
-
-.card{
-    background:white;
-    padding:20px;
-    width:30%;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-footer{
-    background:#1a2e26;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
-
-/* Responsive básico */
-@media(max-width:768px){
-    .hero{
-        flex-direction:column;
-    }
-    .hero-text, .hero-image{
-        width:50%;
-    }
-    .media{
-        flex-direction:column;
-    }
-    .module{
-        width:50%;
-    }
-    .cards{
-        flex-direction:column;
-    }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Florece — Desarrollo Personal</title>
+  <link href="../Styles/index.css" rel="stylesheet"/>
+  
 </head>
-
 <body>
 
-<nav>
-    <div><strong>Evoluciona</strong></div>
-    <div>
-        <a href="#">Inicio</a>
-        <a href="#">Módulos</a>
-        <a href="#">Diario</a>
-        <a href="#">Meditación</a>
-    </div>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Flore<span>ce</span></div>
+    <ul class="nav-links">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Rutinas</a></li>
+      <li><a href="#">Nutrición</a></li>
+      <li><a href="#">Bienestar</a></li>
+      <li><a href="#" class="nav-cta">Comenzar</a></li>
+    </ul>
+  </nav>
 
-<section class="hero">
-    <div class="hero-text">
-        <h1>Pequeños hábitos, grandes cambios</h1>
-        <p>Un espacio donde puedes registrar tu progreso diario y mejorar tu bienestar personal.</p>
-        <div class="hero-buttons">
-            <a href="#">Explorar</a>
-            <a href="#">Registrarse</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="hero-tag">Tu espacio de crecimiento</span>
+      <h1 class="hero-title">
+        Construye tu<br/>
+        mejor <em>versión</em><br/>
+        cada día
+      </h1>
+      <p class="hero-desc">
+        Registra tus hábitos, monitorea tu sueño, sigue tus lecturas y mantén el enfoque en lo que realmente importa.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Empezar ahora</a>
+        <a href="#" class="btn-ghost">Ver módulos →</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-blob"></div>
+      <div class="hero-cards-stack">
+        <div class="mini-card">
+          <div class="card-icon">😴</div>
+          <div>
+            <div class="card-label">Sueño de hoy</div>
+            <div class="card-value">7.5 horas</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width:85%"></div>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="hero-image">
-        <img src="../Images/monje.jpg" alt="Feel">
+        <div class="mini-card">
+          <div class="card-icon">🏋️</div>
+          <div>
+            <div class="card-label">Racha ejercicio</div>
+            <div class="card-value">12 días seguidos</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width:60%"></div>
+            </div>
+          </div>
         </div>
-</section>
-
-<div class="stats">
-    <div class="stat">
-        <h2>0</h2>
-        <p>Usuarios</p>
-    </div>
-    <div class="stat">
-        <h2>14</h2>
-        <p>Módulos</p>
-    </div>
-    <div class="stat">
-        <h2>1</h2>
-        <p>Entradas</p>
-    </div>
-</div>
-
-<section class="section">
-    <h2>Sobre la plataforma</h2>
-
-    <div class="media">
-        <img id="img1">
-        <div class="media-text">
-            <p contenteditable="true">
-                Evoluciona es una plataforma donde puedes registrar hábitos como ejercicio, lectura y meditación.
-            </p>
-            <input type="file" onchange="cargarImagen(this,'img1')">
+        <div class="mini-card">
+          <div class="card-icon">📚</div>
+          <div>
+            <div class="card-label">Lectura activa</div>
+            <div class="card-value">Hábitos Atómicos</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width:47%"></div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-num">13</div>
+      <div class="stat-label">Módulos activos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">360°</div>
+      <div class="stat-label">Visión de tu vida</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Frases motivadoras</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Personalizable</div>
+    </div>
+  </div>
+
+  <!-- MÓDULOS -->
+  <section class="modules">
+    <div class="section-header">
+      <div>
+        <div class="section-tag">Lo que puedes hacer</div>
+        <h2 class="section-title">Tus <em>herramientas</em><br/>de crecimiento</h2>
+      </div>
+      <a href="#" class="see-all">Ver todos →</a>
     </div>
 
-    <div class="media">
-        <img id="img2">
-        <div class="media-text">
-            <p contenteditable="true">
-                Puedes escribir reflexiones personales y llevar control de tus metas.
-            </p>
-            <input type="file" onchange="cargarImagen(this,'img2')">
-        </div>
+    <div class="modules-grid">
+
+      <!-- Meditación & Bienestar — Registro_meditacion + Objetivo_meditacion -->
+      <div class="module-card featured">
+        <div class="module-icon">🧘</div>
+        <div class="module-name">Meditación & Bienestar</div>
+        <div class="module-desc">Registra tus sesiones de meditación, establece objetivos y lleva un seguimiento de tu progreso mental. Guiada, respiración, mindfulness o body scan.</div>
+        <div class="module-stat"><div class="module-dot"></div> 4 tipos de meditación disponibles</div>
+        <img src="../Images/salud.jpg" alt="imagen meditación y bienestar">
+      </div>
+
+      <!-- Rutinas de Ejercicio — Rutina + Ejercicio -->
+      <div class="module-card">
+        <div class="module-icon">🏋️</div>
+        <div class="module-name">Rutinas de Ejercicio</div>
+        <div class="module-desc">Crea rutinas personalizadas y lleva el control de cada ejercicio.</div>
+        <div class="module-stat"><div class="module-dot"></div> Series, repeticiones y descanso</div>
+        <img src="../Images/ejercicio.jpg" alt="imagen registro de gym">
+      </div>
+
+      <!-- Perfil Nutricional — Perfil_nutricional -->
+      <div class="module-card">
+        <div class="module-icon">🥗</div>
+        <div class="module-name">Perfil Nutricional</div>
+        <div class="module-desc">Registra tu peso, altura y objetivos de nutrición según tu nivel de actividad.</div>
+        <div class="module-stat"><div class="module-dot"></div> IMC y seguimiento de metas</div>
+        <img src="../Images/nutrici0n.jpg" alt="imagen perfil nutricional">
+      </div>
+
+      <!-- Mis Lecturas — Libro -->
+      <div class="module-card">
+        <div class="module-icon">📚</div>
+        <div class="module-name">Mis Lecturas</div>
+        <div class="module-desc">Lleva un registro de tus libros: pendientes, en progreso o terminados.</div>
+        <div class="module-stat"><div class="module-dot"></div> Progreso por páginas</div>
+        <img src="../Images/lectura.jpg" alt="imagen mis lecturas">
+      </div>
+
+      <!-- Registro de Sueño — Registro_sueño -->
+      <div class="module-card">
+        <div class="module-icon">😴</div>
+        <div class="module-name">Registro de Sueño</div>
+        <div class="module-desc">Monitorea tus horas de sueño y calidad de descanso cada noche.</div>
+        <div class="module-stat"><div class="module-dot"></div> Promedio semanal y calidad</div>
+        <img src="../Images/registro_sueño.jpg" alt="imagen registro de sueño">
+      </div>
+
+      <!-- Diario Personal — Entrada_diario -->
+      <div class="module-card">
+        <div class="module-icon">📓</div>
+        <div class="module-name">Diario Personal</div>
+        <div class="module-desc">Escribe tus reflexiones diarias, qué pasó y tus planes para mañana.</div>
+        <div class="module-stat"><div class="module-dot"></div> Reflexión y planificación</div>
+        <img src="../Images/relax.png" alt="imagen diario personal">
+      </div>
+
+      <!-- Mis Objetivos — Objetivos -->
+      <div class="module-card">
+        <div class="module-icon">🎯</div>
+        <div class="module-name">Mis Objetivos</div>
+        <div class="module-desc">Define y sigue tus metas personales con fecha límite. El sistema actualiza el estado automáticamente según tu progreso y hábitos.</div>
+        <div class="module-stat"><div class="module-dot"></div> Estado: pendiente, cumplido o vencido</div>
+        <img src="../Images/obejetivos.jpg" alt="imagen mis objetivos">
+      </div>
+
+      <!-- Apoyo Emocional — Apoyo_emocional -->
+      <div class="module-card">
+        <div class="module-icon">💚</div>
+        <div class="module-name">Apoyo Emocional</div>
+        <div class="module-desc">Accede a recursos de bienestar emocional según tu estado de ánimo: técnicas de respiración, gratitud, manejo del estrés y más.</div>
+        <div class="module-stat"><div class="module-dot"></div> Recursos según tu nivel de ánimo</div>
+        <img src="../Images/apoyoemocional.jpg" alt="imagen apoyo emocional">
+      </div>
+
+      <!-- Frases Motivadoras — Frase_motivadora -->
+      <div class="module-card">
+        <div class="module-icon">✨</div>
+        <div class="module-name">Frases Motivadoras</div>
+        <div class="module-desc">Descubre frases inspiradoras que se vinculan a tus objetivos y rachas para mantenerte enfocado en tu crecimiento diario.</div>
+        <div class="module-stat"><div class="module-dot"></div> Asociadas a objetivos y rachas</div>
+        <img src="../Images/animo.jpg" alt="imagen frases motivadoras">
+      </div>
+
+      <!-- Racha de Ejercicio — Racha_ejercicio -->
+      <div class="module-card">
+        <div class="module-icon">🔥</div>
+        <div class="module-name">Racha de Ejercicio</div>
+        <div class="module-desc">Registra cada día que entrenas y el sistema calcula automáticamente cuántos días consecutivos llevas. ¡No rompas la racha!</div>
+        <div class="module-stat"><div class="module-dot"></div> Días consecutivos calculados automáticamente</div>
+        <img src="../Images/ejercicioracha.jpg" alt="imagen racha de ejercicio">
+      </div>
+
+      <!-- Racha de Lectura — Racha_lectura -->
+      <div class="module-card">
+        <div class="module-icon">📖</div>
+        <div class="module-name">Racha de Lectura</div>
+        <div class="module-desc">Mantén el hábito de leer cada día y sigue tu racha de lectura consecutiva. Cada día cuenta para construir el hábito.</div>
+        <div class="module-stat"><div class="module-dot"></div> Hábito de lectura diaria</div>
+        <img src="../Images/racha.jpg" alt="imagen racha de lectura">
+      </div>
+
+      <!-- Usuario — Usuario -->
+      <div class="module-card">
+        <div class="module-icon">👤</div>
+        <div class="module-name">Mi Perfil</div>
+        <div class="module-desc">Gestiona tu cuenta personal: nombre, correo y contraseña. Tu perfil es el punto de partida para personalizar toda la experiencia.</div>
+        <div class="module-stat"><div class="module-dot"></div> Acceso seguro con correo único</div>
+        <img src="../Images/icon.jpg" alt="imagen perfil de usuario">
+      </div>
+
+      <!-- Objetivo de Meditación — Objetivo_meditacion -->
+      <div class="module-card">
+        <div class="module-icon">🧠</div>
+        <div class="module-name">Objetivo de Meditación</div>
+        <div class="module-desc">Establece cuántos días a la semana quieres meditar y por cuánto tiempo. Define tu meta y el sistema lleva el seguimiento por ti.</div>
+        <div class="module-stat"><div class="module-dot"></div> Días y duración personalizables</div>
+        <img src="../Images/obejetivos.jpg" alt="imagen objetivo de meditación">
+      </div>
+
     </div>
-</section>
+  </section>
 
-<section class="modules">
-    <h2>Módulos</h2>
-    <div class="module-list">
-        <div class="module">Diario Personal</div>
-        <div class="module">Meditación</div>
-        <div class="module">Sueño</div>
-        <div class="module">Nutrición</div>
-        <div class="module">Ejercicio</div>
-        <div class="module">Lectura</div>
-    </div>
-</section>
+  <!-- FRASE -->
+  <section class="quote-section">
+    <p class="quote-text">El primer gran paso es comenzar.</p>
+    <span class="quote-author">— LoboAlfa</span>
+  </section>
 
-<section class="recent">
-    <h2>Entradas recientes</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>1 de enero</h3>
-            <p>Empecé el año con energía.</p>
-        </div>
-        <div class="card">
-            <h3>2 de enero</h3>
-            <p>Aprendí algo nuevo hoy.</p>
-        </div>
-        <div class="card">
-            <h3>3 de enero</h3>
-            <p>Salí a correr después de meses.</p>
-        </div>
-    </div>
-</section>
-
-<footer>
-    © 2025 Evoluciona - Proyecto escolar
-</footer>
-
-<script>
-function cargarImagen(input, idImagen){
-    var archivo = input.files[0];
-    var lector = new FileReader();
-
-    lector.onload = function(e){
-        document.getElementById(idImagen).src = e.target.result;
-    }
-
-    if(archivo){
-        lector.readAsDataURL(archivo);
-    }
-}
-</script>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Crece</div>
+    <div class="footer-note">Proyecto BIM1 — Desarrollo Personal · 2026</div>
+  </footer>
 
 </body>
 </html>
