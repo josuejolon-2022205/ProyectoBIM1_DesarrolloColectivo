@@ -1,6 +1,7 @@
 package com.BIM1.ProyectoDesarrolloColectivo.Exceptions;
 
 import jakarta.validation.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -15,29 +16,28 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> validarCampos(Exception e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Aviso: ", e.getMessage()));
+    public ResponseEntity<?> validarCampos(Exception e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error:", e.getMessage()));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> handleBodyValidation(MethodArgumentNotValidException e) {
-        List<String> mensajes = e.getBindingResult().getFieldErrors().stream().map(err -> err.getDefaultMessage()).toList();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Errores:", mensajes));
+    public ResponseEntity<?> validarAnotaciones(MethodArgumentNotValidException ex) {
+        List<String> mensajes = ex.getBindingResult().getFieldErrors().stream().map(err -> err.getDefaultMessage()).toList();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("errores", mensajes));
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<?> validarFormatoJsonYTipoDato(HttpMessageNotReadableException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Error: ", "JSON inválido o el tipo de dato es incorrecto"));
+    public ResponseEntity<?> validarJsonYTipoDato(HttpMessageNotReadableException e){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "JSON inválido o tipo de dato incorrecto."));
     }
 
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<?> validarFKS(ConstraintViolationException e) {
-        String msg = e.getConstraintViolations().iterator().next().getMessage();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Error: ", "No existe el id del FK"));
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<?> validarFk(DataIntegrityViolationException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Error", "Error en las llaves foraneas"));
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<?> validarId(IllegalArgumentException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error: ", "El id no se encontró"));
+    public ResponseEntity<?> validarId(IllegalArgumentException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("Error", "el id no se encontro"));
     }
 }

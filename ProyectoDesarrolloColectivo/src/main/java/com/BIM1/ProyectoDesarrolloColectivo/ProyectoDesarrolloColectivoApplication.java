@@ -11,8 +11,8 @@ public class ProyectoDesarrolloColectivoApplication implements CommandLineRunner
 		SpringApplication.run(ProyectoDesarrolloColectivoApplication.class, args);
 	}
 
-    @Override
-    public void run(String... args) throws Exception {
-        System.out.println("API Funcionando");
-    }
+	@Override
+	public void run(String... args) throws Exception {
+		System.out.println("test api");
+	}
 }
